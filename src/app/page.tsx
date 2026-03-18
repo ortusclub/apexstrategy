@@ -1,24 +1,32 @@
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import Solutions from "@/components/Solutions";
-import CaseStudies from "@/components/CaseStudies";
-import TrustedBy from "@/components/TrustedBy";
+import LogosBar from "@/components/LogosBar";
+import Timeline from "@/components/Timeline";
+import NoWinNoFee from "@/components/NoWinNoFee";
+import PainCards from "@/components/PainCards";
+import Solution from "@/components/Solution";
+import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Contact from "@/components/Contact";
+import OtherServices from "@/components/OtherServices";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <ScrollReveal />
+      <Navbar />
       <Hero />
-      <Solutions />
-      <CaseStudies />
-      <TrustedBy />
+      <LogosBar />
+      <Timeline />
+      <NoWinNoFee />
+      <PainCards />
+      <Solution />
+      <Process />
       <Testimonials />
-      <WhyChooseUs />
-      <Contact />
+      <OtherServices />
+      <ContactForm />
       <Footer />
     </>
   );

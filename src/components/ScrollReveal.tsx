@@ -1,55 +1,35 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect } from "react";
 
-interface ScrollRevealProps {
-  children: ReactNode;
-  direction?: "up" | "left" | "right";
-  delay?: number;
-  className?: string;
-}
-
-export default function ScrollReveal({
-  children,
-  direction = "up",
-  delay = 0,
-  className = "",
-}: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
+export default function ScrollReveal() {
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            el.classList.add("revealed");
-          }, delay);
-          observer.unobserve(el);
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const siblings = el.parentElement?.querySelectorAll(".reveal");
+            const index = siblings
+              ? Array.from(siblings).indexOf(el)
+              : 0;
+            const delay = index * 60;
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, delay);
+            observer.unobserve(el);
+          }
+        });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
-    observer.observe(el);
+    document.querySelectorAll(".reveal").forEach((el) => {
+      observer.observe(el);
+    });
+
     return () => observer.disconnect();
-  }, [delay]);
+  }, []);
 
-  const directionClass =
-    direction === "left"
-      ? "translate-x-[-2em]"
-      : direction === "right"
-        ? "translate-x-[2em]"
-        : "translate-y-[2em]";
-
-  return (
-    <div
-      ref={ref}
-      className={`opacity-0 ${directionClass} transition-all duration-1000 ease-in-out [&.revealed]:opacity-100 [&.revealed]:translate-x-0 [&.revealed]:translate-y-0 ${className}`}
-    >
-      {children}
-    </div>
-  );
+  return null;
 }

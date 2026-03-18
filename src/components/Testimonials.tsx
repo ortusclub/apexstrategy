@@ -1,42 +1,50 @@
-"use client";
-
-import ScrollReveal from "./ScrollReveal";
-
-const testimonials = [
-  {
-    quote:
-      "Apex Strategy brought us the right target audience, the right level of people, and engage them in the right level of discussions so that we learn and therefore discover what we don't know before the discussion.",
-    name: "Daniel Ng",
-    company: "Neo4j",
-  },
-  {
-    quote:
-      "The Apex team is capable of securing attendees. They were able to help us with not only the audience acquisition, but also with the follow-ups to get to those critical one-on-one meetings.",
-    name: "Sheri Bannister",
-    company: "Avanade",
-  },
-];
-
 export default function Testimonials() {
+  const testimonials = [
+    {
+      quote:
+        "Apex Strategy filled our executive dinner in Singapore with 28 qualified CIOs in just 10 days. We\u2019d been trying for 6 weeks ourselves and had 4 confirmations. They completely transformed our event.",
+      name: "Daniel Ng",
+      role: "Regional Marketing Director, Enterprise SaaS",
+    },
+    {
+      quote:
+        "We were two weeks out from our flagship summit with 40% of seats unfilled. Apex delivered 35 senior decision-makers in 11 days. The quality was exceptional \u2014 every attendee matched our ICP perfectly.",
+      name: "Sheri Bannister",
+      role: "Head of Events, Global Technology Company",
+    },
+  ];
+
   return (
-    <section className="bg-[#00625a] py-24">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-12 md:grid-cols-2">
+    <section className="py-24 bg-bg-secondary">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16 reveal">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="w-8 h-0.5 bg-accent"></span>
+            <span className="text-accent text-xs font-semibold tracking-widest uppercase">
+              What clients say
+            </span>
+            <span className="w-8 h-0.5 bg-accent"></span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold">
+            The proof is in the attendance.
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
-            <ScrollReveal key={t.name} delay={i * 200}>
-              <blockquote className="group text-white transition-all duration-300 hover:translate-x-1">
-                <svg className="mb-4 h-8 w-8 text-white/40 transition-colors duration-300 group-hover:text-white/60" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                <p className="text-lg leading-relaxed text-white/90 transition-colors duration-300 group-hover:text-white">
-                  {t.quote}
-                </p>
-                <footer className="mt-6">
-                  <p className="font-semibold text-white">{t.name}</p>
-                  <p className="text-sm text-white/60">{t.company}</p>
-                </footer>
-              </blockquote>
-            </ScrollReveal>
+            <div
+              key={i}
+              className="bg-bg-card border border-border rounded-2xl p-8 reveal"
+            >
+              <div className="text-accent text-4xl mb-4">&ldquo;</div>
+              <p className="text-text-light leading-relaxed mb-6 italic">
+                {t.quote}
+              </p>
+              <div>
+                <div className="font-semibold text-white">{t.name}</div>
+                <div className="text-text-muted text-sm">{t.role}</div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

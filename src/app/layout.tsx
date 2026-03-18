@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -8,9 +14,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Apex Strategy | Targeted B2B Lead Generation",
+  title: "Apex Strategy | B2B Delegate Acquisition",
   description:
-    "Apex Strategy unlocks opportunities in generating and securing actionable B2B leads through tailored outreach, precise research, and strategic appointment setting.",
+    "Apex Strategy delivers qualified decision-makers to your events. No win, no fee. 12+ years, 40+ countries, 2,500+ events.",
 };
 
 export default function RootLayout({
@@ -20,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${poppins.variable} ${inter.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

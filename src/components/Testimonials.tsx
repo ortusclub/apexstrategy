@@ -1,3 +1,7 @@
+"use client";
+
+import ScrollReveal from "./ScrollReveal";
+
 const testimonials = [
   {
     quote:
@@ -15,19 +19,24 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-teal py-24">
+    <section className="bg-[#00625a] py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 md:grid-cols-2">
-          {testimonials.map((t) => (
-            <blockquote key={t.name} className="text-white">
-              <p className="text-lg leading-relaxed text-white/90">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <footer className="mt-6">
-                <p className="font-semibold">{t.name}</p>
-                <p className="text-sm text-white/70">{t.company}</p>
-              </footer>
-            </blockquote>
+          {testimonials.map((t, i) => (
+            <ScrollReveal key={t.name} delay={i * 200}>
+              <blockquote className="group text-white transition-all duration-300 hover:translate-x-1">
+                <svg className="mb-4 h-8 w-8 text-white/40 transition-colors duration-300 group-hover:text-white/60" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="text-lg leading-relaxed text-white/90 transition-colors duration-300 group-hover:text-white">
+                  {t.quote}
+                </p>
+                <footer className="mt-6">
+                  <p className="font-semibold text-white">{t.name}</p>
+                  <p className="text-sm text-white/60">{t.company}</p>
+                </footer>
+              </blockquote>
+            </ScrollReveal>
           ))}
         </div>
       </div>

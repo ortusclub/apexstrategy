@@ -8,7 +8,6 @@ import { CTA_PRIMARY } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/delegate-acquisition", label: "Delegate Acquisition" },
-  { href: "/#process", label: "How it works" },
   { href: "/#services", label: "Services" },
   { href: "/faq", label: "FAQ" },
 ];

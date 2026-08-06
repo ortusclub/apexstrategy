@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import CtaSection from "@/components/CtaSection";
-import EventShowcase from "@/components/EventShowcase";
 import JsonLd from "@/components/JsonLd";
 import LogosBar from "@/components/LogosBar";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -112,7 +111,7 @@ export default function DelegateAcquisitionPage() {
           <div className="max-w-6xl mx-auto px-6">
             <SectionHeading
               eyebrow="Who this is for"
-              title="Built for events where the guest list is the product."
+              title="Built for Events Where Every Seat Matters"
               intro="If your event succeeds or fails on who is in the room, this is the problem we solve."
               align="center"
             />
@@ -258,9 +257,6 @@ export default function DelegateAcquisitionPage() {
             </div>
           </div>
         </section>
-
-        {/* DELIVERED EVENTS */}
-        <EventShowcase />
 
         {/* FAQ POINTER — full answers and FAQPage schema live on /faq */}
         <section className="py-24">

@@ -20,44 +20,44 @@ export type UseCase = { title: string; description: string };
 
 export const USE_CASES: UseCase[] = [
   {
-    title: "Executive dinners",
+    title: "Executive Dinners",
     description:
-      "Ten to thirty senior guests around one table, where a single wrong seat is obvious to everyone in the room.",
+      "10–30 senior executives where every attendee needs to be the right fit.",
   },
   {
     title: "Roundtables",
     description:
-      "Peer-level discussion that only works when every participant carries comparable seniority and scope.",
+      "Curated peer discussions that depend on executive-level participation.",
   },
   {
-    title: "CIO and technology events",
+    title: "Breakfast & Luncheons",
     description:
-      "Audiences of enterprise technology leaders who are heavily targeted and rarely respond to generic invitations.",
+      "Smaller networking and thought leadership events designed for targeted audiences.",
   },
   {
-    title: "Security events",
+    title: "Conferences",
     description:
-      "CISO and head-of-security audiences, where credibility of the invitation matters as much as the topic.",
+      "Large-scale B2B conferences requiring qualified delegates across multiple industries.",
   },
   {
-    title: "AI and data events",
+    title: "Summits",
     description:
-      "Fast-moving subject matter where the right audience shifts between technical, commercial and strategic owners.",
+      "Invitation-only executive summits where audience quality drives event success.",
   },
   {
-    title: "Breakfast and lunch briefings",
+    title: "Roadshows",
     description:
-      "Short-format sessions that have to justify a senior calendar slot before anyone commits.",
+      "Multi-city executive events requiring consistent delegate acquisition across locations.",
   },
   {
-    title: "Summits and seminars",
+    title: "Workshops & Briefings",
     description:
-      "Larger programmes where volume cannot come at the cost of seniority or relevance.",
+      "Focused educational sessions for decision-makers and industry leaders.",
   },
   {
-    title: "Partner and hospitality events",
+    title: "Networking & Hospitality Events",
     description:
-      "Relationship-building formats where the guest list defines the commercial value of the day.",
+      "VIP receptions, customer appreciation events, and partner engagements where meaningful connections matter.",
   },
 ];
 

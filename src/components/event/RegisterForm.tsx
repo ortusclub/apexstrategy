@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 type Status =
   | { kind: "idle" }
@@ -47,7 +48,7 @@ export default function RegisterForm() {
       setStatus({
         kind: "error",
         message:
-          "Network error — please try again, or email driton@apexstrategy.io directly.",
+          `Network error — please try again, or email ${CONTACT_EMAIL} directly.`,
       });
     }
   }

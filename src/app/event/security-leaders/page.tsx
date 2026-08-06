@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import RegisterForm from "@/components/event/RegisterForm";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Securing the Enterprise — A CISO Roundtable · 30 June 2026 · Alexandria, VA",
@@ -302,7 +303,7 @@ export default function EventPage() {
       <footer className="border-t border-border py-10 text-center text-sm text-text-muted">
         <div className="flex justify-center gap-6 mb-3">
           <Link href="/" className="hover:text-accent transition-colors">Apex Strategy</Link>
-          <a href="mailto:driton@apexstrategy.io" className="hover:text-accent transition-colors">driton@apexstrategy.io</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-accent transition-colors">{CONTACT_EMAIL}</a>
         </div>
         <div>© 2026 Apex Guesting Limited &nbsp;·&nbsp; Convened with Aphinia</div>
       </footer>

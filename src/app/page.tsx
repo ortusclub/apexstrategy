@@ -19,7 +19,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <LogosBar />
+        <LogosBar prominent />
         <Timeline />
         <NoWinNoFee />
         <PainCards />

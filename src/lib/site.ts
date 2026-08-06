@@ -12,7 +12,17 @@ export const SITE_NAME = "Apex Strategy";
 
 export const LEGAL_NAME = "Apex Guesting Limited";
 
-export const CONTACT_EMAIL = "driton@apexstrategy.io";
+export const CONTACT_EMAIL = "info@apexstrategy.io";
+
+export const LINKEDIN_URL =
+  "https://www.linkedin.com/company/apex-guesting-partner/";
+
+/**
+ * One primary call to action across the whole site, and one secondary.
+ * Keeping these in constants stops the wording drifting between sections.
+ */
+export const CTA_PRIMARY = "Book a Call";
+export const CTA_SECONDARY = "Request a Delegate Strategy";
 
 export const SITE_DESCRIPTION =
   "Apex Strategy delivers qualified decision-makers to your events. No win, no fee. 12+ years, 40+ countries, 2,500+ events.";
@@ -33,19 +43,23 @@ export type Service = {
   title: string;
   /** Meta description and JSON-LD description. */
   description: string;
+  /**
+   * Whether the route belongs in the sitemap and may be indexed.
+   * Appointment Setting and Data Services are currently a paragraph each;
+   * indexing them would put two thin pages into the site's SEO footprint.
+   * Flip to true once each has real content.
+   */
+  indexable: boolean;
 };
 
-/**
- * The three service routes. Copy is lifted verbatim from the existing
- * homepage sections — nothing new has been written.
- */
 export const SERVICES: Service[] = [
   {
     slug: "delegate-acquisition",
     name: "Delegate Acquisition",
     title: "Delegate Acquisition",
     description:
-      "We get qualified decision-makers to your event. Every time. Targeted, multi-channel outreach to C-suite, VP and Director level attendees — on a no win, no fee basis.",
+      "We fill executive events with qualified decision-makers through targeted, multi-channel outreach — on a genuine no win, no fee basis.",
+    indexable: true,
   },
   {
     slug: "appointment-setting",
@@ -53,6 +67,7 @@ export const SERVICES: Service[] = [
     title: "Appointment Setting",
     description:
       "Qualified meetings booked directly into your sales team's calendar. We handle the outreach, qualification, and scheduling so your team focuses on closing.",
+    indexable: false,
   },
   {
     slug: "data-services",
@@ -60,6 +75,7 @@ export const SERVICES: Service[] = [
     title: "Data Services",
     description:
       "Verified, targeted contact data for your campaigns. We build bespoke prospect lists matched to your ICP — complete with direct dials, verified emails, and key firmographic data.",
+    indexable: false,
   },
 ];
 

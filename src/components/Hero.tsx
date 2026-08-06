@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ArrowRightIcon, BoltIcon, CheckIcon } from "@/components/icons";
+import { CTA_PRIMARY } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -47,7 +48,7 @@ export default function Hero() {
                 href="#contact"
                 className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
-                Get a Quote <ArrowRightIcon className="w-4 h-4" />
+                {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
               </a>
               <a
                 href="#timeline"

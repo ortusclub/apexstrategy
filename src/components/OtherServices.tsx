@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRightIcon, CalendarIcon, DatabaseIcon } from "@/components/icons";
-import { getService } from "@/lib/site";
+import { CTA_PRIMARY, getService } from "@/lib/site";
 
 export default function OtherServices() {
   const services = [
@@ -39,11 +39,16 @@ export default function OtherServices() {
               <p className="text-text-light text-sm leading-relaxed mb-5">
                 {s.description}
               </p>
+              {/*
+                These two are enquiry-led rather than self-serve: the card
+                sends people to the contact form, not to a thin service page.
+              */}
               <Link
-                href={`/${s.slug}`}
+                href="/#contact"
                 className="text-accent hover:text-accent-hover font-medium text-sm inline-flex items-center gap-1.5 transition-colors rounded-sm"
               >
-                Learn more about {s.name}
+                {CTA_PRIMARY}
+                <span className="sr-only"> about {s.name}</span>
                 <ArrowRightIcon className="w-4 h-4" />
               </Link>
             </div>

@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CTA_PRIMARY } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/delegate-acquisition", label: "Delegate Acquisition" },
   { href: "/#process", label: "How It Works" },
   { href: "/#services", label: "Services" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export default function Navbar() {
@@ -82,7 +84,7 @@ export default function Navbar() {
             href="/#contact"
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors"
           >
-            Get a Quote
+            {CTA_PRIMARY}
           </Link>
         </div>
 
@@ -145,7 +147,7 @@ export default function Navbar() {
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-5 py-3 my-3 rounded-lg text-sm transition-colors text-center"
             onClick={() => setMobileOpen(false)}
           >
-            Get a Quote
+            {CTA_PRIMARY}
           </Link>
         </div>
       )}

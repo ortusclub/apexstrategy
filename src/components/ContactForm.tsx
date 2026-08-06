@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import { CTA_PRIMARY } from "@/lib/site";
 
 const FIELD_CLASS =
   "w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors";
@@ -60,12 +61,16 @@ export default function ContactForm() {
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Stop worrying about who&apos;s coming.
+              Fill your executive event with qualified B2B decision-makers
             </h2>
+            <p className="text-accent text-lg font-semibold mb-4">
+              No win. No fee.
+            </p>
             <p className="text-text-light text-lg leading-relaxed mb-10">
-              Tell us about your event and we&apos;ll show you how we can help.
-              No obligation, no hard sell — just a conversation about filling
-              your room with the right people.
+              We source verified executives for conferences, summits, executive
+              dinners and roundtables worldwide. Tell us about your event and
+              we&apos;ll come back within one business day — no obligation, no
+              hard sell.
             </p>
 
             <div className="grid grid-cols-3 gap-4">
@@ -82,6 +87,10 @@ export default function ContactForm() {
                 <div className="text-text-muted text-xs mt-1">Events Delivered</div>
               </div>
             </div>
+
+            <p className="text-text-muted text-sm mt-6">
+              Trusted by leading B2B event organisers.
+            </p>
           </div>
 
           {/* Right - Form */}
@@ -262,7 +271,7 @@ export default function ContactForm() {
                   disabled={submitting}
                   className="w-full bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3.5 rounded-lg text-base transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {submitting ? "Sending..." : "Submit"}
+                  {submitting ? "Sending..." : CTA_PRIMARY}
                 </button>
               </form>
             )}

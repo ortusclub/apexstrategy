@@ -11,11 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
-    ...SERVICES.map((service) => ({
+    // Only services with real content — see `indexable` in @/lib/site.
+    ...SERVICES.filter((service) => service.indexable).map((service) => ({
       url: `${SITE_URL}/${service.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.8,
+      priority: 0.9,
     })),
+    {
+      url: `${SITE_URL}/faq`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
   ];
 }

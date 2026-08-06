@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: service.title,
   description: service.description,
   alternates: { canonical: `/${service.slug}` },
+  // Held back from the index until this page has real content — a
+  // one-paragraph page would only dilute the site's SEO footprint.
+  robots: { index: false, follow: true },
   openGraph: {
     title: `${service.title} | Apex Strategy`,
     description: service.description,

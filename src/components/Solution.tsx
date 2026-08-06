@@ -7,15 +7,13 @@ import {
   SportingIcon,
   SummitIcon,
 } from "@/components/icons";
+import { CTA_PRIMARY } from "@/lib/site";
+import { OUTCOMES } from "@/content/delegate-acquisition";
 
 export default function Solution() {
-  const features = [
-    "Targeted outreach to named accounts & job titles",
-    "Multi-channel approach: phone, email, LinkedIn",
-    "Senior decision-makers: C-suite, VP, Director level",
-    "Confirmation & reminder management included",
-    "Detailed attendee profiles delivered before the event",
-  ];
+  // Shared with the Delegate Acquisition page so the promise stays identical
+  // wherever a visitor lands.
+  const features = OUTCOMES;
 
   const eventTypes = [
     { Icon: DiningIcon, title: "Executive Dinners", desc: "Intimate, high-level gatherings for senior decision-makers." },
@@ -42,9 +40,9 @@ export default function Solution() {
               your event. Every time.
             </h2>
             <p className="text-text-light text-lg leading-relaxed mb-8">
-              Delegate acquisition is all we do. We don&apos;t plan events, we
-              don&apos;t run venues — we fill rooms with the people you actually
-              want to meet.
+              We fill executive events with qualified decision-makers through
+              targeted, multi-channel outreach — on a genuine no win, no fee
+              basis. Delegate acquisition is all we do.
             </p>
 
             <ul className="space-y-3 mb-8">
@@ -61,7 +59,7 @@ export default function Solution() {
                 href="#contact"
                 className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
-                Get a Quote <ArrowRightIcon className="w-4 h-4" />
+                {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
               </a>
               <Link
                 href="/delegate-acquisition"

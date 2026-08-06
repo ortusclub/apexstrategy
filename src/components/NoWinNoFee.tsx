@@ -38,12 +38,11 @@ export default function NoWinNoFee() {
             <div className="reveal">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 No win, no fee.{" "}
-                <span className="text-accent">Zero risk, full commitment.</span>
+                <span className="text-accent">The risk sits with us.</span>
               </h2>
               <p className="text-text-light leading-relaxed">
-                We&apos;re so confident in our ability to deliver that we only
-                charge for results. If we don&apos;t fill the seats, you don&apos;t
-                pay. Simple.
+                We only charge for results. If we don&apos;t fill the seats, you
+                don&apos;t pay.
               </p>
             </div>
 

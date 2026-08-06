@@ -28,7 +28,7 @@ export default function LogosBar({
       <section className="border-y border-border py-8">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8">
           <h2 className="text-text-muted text-xs font-semibold tracking-widest uppercase whitespace-nowrap">
-            Trusted By
+            Trusted by
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 flex-1">
             {logos.map((logo) => (
@@ -55,7 +55,7 @@ export default function LogosBar({
             id="trusted-by"
             className="text-accent text-xs font-semibold tracking-widest uppercase mb-3"
           >
-            Trusted By
+            Trusted by
           </h2>
           <p className="text-text-light text-lg max-w-2xl mx-auto">
             Trusted by leading B2B event organisers and technology companies.

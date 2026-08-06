@@ -8,7 +8,15 @@ const FIELD_CLASS =
 
 const LABEL_CLASS = "block text-text-light text-sm mb-1.5";
 
-export default function ContactForm() {
+/**
+ * `as` controls the heading level: h1 on the dedicated /contact page,
+ * h2 when the section is embedded in a longer page.
+ */
+export default function ContactForm({
+  as: Heading = "h2",
+}: {
+  as?: "h1" | "h2";
+}) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -60,9 +68,9 @@ export default function ContactForm() {
                 Let&apos;s talk
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <Heading className="text-3xl md:text-4xl font-bold mb-4">
               Fill your executive event with qualified B2B decision-makers
-            </h2>
+            </Heading>
             <p className="text-accent text-lg font-semibold mb-4">
               No win. No fee.
             </p>
@@ -76,15 +84,15 @@ export default function ContactForm() {
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-bg-card border border-border rounded-xl p-4 text-center">
                 <div className="text-accent text-2xl font-bold">12+</div>
-                <div className="text-text-muted text-xs mt-1">Years Experience</div>
+                <div className="text-text-light text-xs mt-1">Years Experience</div>
               </div>
               <div className="bg-bg-card border border-border rounded-xl p-4 text-center">
                 <div className="text-accent text-2xl font-bold">40+</div>
-                <div className="text-text-muted text-xs mt-1">Countries</div>
+                <div className="text-text-light text-xs mt-1">Countries</div>
               </div>
               <div className="bg-bg-card border border-border rounded-xl p-4 text-center">
                 <div className="text-accent text-2xl font-bold">2,500+</div>
-                <div className="text-text-muted text-xs mt-1">Events Delivered</div>
+                <div className="text-text-light text-xs mt-1">Events Delivered</div>
               </div>
             </div>
 

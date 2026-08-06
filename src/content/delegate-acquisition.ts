@@ -96,133 +96,67 @@ export const FAILURE_MODES: FailureMode[] = [
   },
 ];
 
-export type MethodologyStep = { title: string; description: string };
+export type CampaignStage = {
+  /** Where the stage falls in a typical campaign. */
+  when: string;
+  title: string;
+  description: string;
+};
 
-export const METHODOLOGY: MethodologyStep[] = [
+/**
+ * Methodology and campaign timeline as one sequence: every stage of the
+ * method, placed on the week it happens. Written as a typical seven-week
+ * run — short-notice campaigns compress the same stages rather than
+ * skipping any of them.
+ */
+export const CAMPAIGN_STAGES: CampaignStage[] = [
   {
+    when: "Week 1",
     title: "ICP definition",
     description:
       "We agree exactly who counts as a qualified delegate before anything else happens: job titles, seniority, functions, industries, company size and geography. This definition becomes the standard every delegate is measured against, and the basis on which you are invoiced.",
   },
   {
+    when: "Weeks 1–2",
     title: "Prospect research",
     description:
       "We build a targeted prospect list against that profile, working from named accounts where you have them and identifying comparable organisations where you do not. The list is built for your campaign rather than pulled from a static database.",
   },
   {
+    when: "Week 2",
     title: "Data verification",
     description:
       "Contact records are verified before outreach begins — role and organisation confirmed, direct contact details validated. Effort is spent on reaching people, not on discovering that a record is three years out of date.",
   },
   {
+    when: "Weeks 3–6",
     title: "Multi-channel outreach",
     description:
       "Outreach runs across phone, email and LinkedIn, conducted by people who can hold a conversation about the subject matter. Each approach is specific to the individual and the reason the session is relevant to them.",
   },
   {
+    when: "Weeks 3–6",
     title: "Qualification",
     description:
       "Interest is not the same as fit. Every prospect who engages is qualified against the agreed criteria — confirming seniority, remit and relevance — before they are counted as a delegate.",
   },
   {
+    when: "Weeks 4–7",
     title: "Confirmation",
     description:
       "Qualified delegates are formally confirmed and their details recorded. You see who has committed as the campaign progresses, rather than receiving a list at the end.",
   },
   {
+    when: "Final week",
     title: "Reminder campaign",
     description:
       "In the run-up to the event we run a structured reminder programme across the confirmed list, addressing diary conflicts early rather than discovering them on the day.",
   },
   {
+    when: "Event day",
     title: "Delegate delivery",
     description:
       "You receive detailed attendee profiles ahead of the event — who is attending, their role and their organisation — so your team can prepare properly for the conversations in the room.",
-  },
-];
-
-export type ProcessStep = { title: string; description: string };
-
-export const PROCESS: ProcessStep[] = [
-  {
-    title: "Discovery call",
-    description:
-      "We establish the event, the audience you need in the room, the target number and the date. Thirty minutes is usually enough to tell you whether we can help.",
-  },
-  {
-    title: "ICP definition",
-    description:
-      "We agree the attendee criteria in writing. This is the standard delegates are qualified against and the basis for what you pay.",
-  },
-  {
-    title: "Prospect research",
-    description:
-      "We build and verify a prospect list against the agreed profile, covering named accounts and comparable organisations.",
-  },
-  {
-    title: "Outreach campaign",
-    description:
-      "Multi-channel outreach begins across phone, email and LinkedIn, with each approach specific to the individual.",
-  },
-  {
-    title: "Qualification",
-    description:
-      "Interested prospects are qualified against the agreed criteria before they count towards your target.",
-  },
-  {
-    title: "Confirmation",
-    description:
-      "Qualified delegates confirm attendance, and we manage the confirmed list through to the event.",
-  },
-  {
-    title: "Delegate delivery",
-    description:
-      "You receive full attendee profiles before the event, and a reminder campaign protects attendance on the day.",
-  },
-];
-
-export type TimelinePhase = { when: string; title: string; description: string };
-
-/**
- * Indicative shape of a campaign. Written as a typical seven-week run;
- * short-notice campaigns compress the same phases.
- */
-export const CAMPAIGN_TIMELINE: TimelinePhase[] = [
-  {
-    when: "Week 1",
-    title: "Planning",
-    description:
-      "Discovery call, ICP agreed in writing, target number and criteria confirmed.",
-  },
-  {
-    when: "Week 2",
-    title: "Prospect building",
-    description:
-      "Targeted prospect list built and contact data verified against the agreed profile.",
-  },
-  {
-    when: "Weeks 3–6",
-    title: "Outreach",
-    description:
-      "Multi-channel outreach across phone, email and LinkedIn, with structured follow-up.",
-  },
-  {
-    when: "Weeks 4–7",
-    title: "Confirmations",
-    description:
-      "Qualified delegates confirm attendance and profiles are shared with you as they land.",
-  },
-  {
-    when: "Final week",
-    title: "Reminder campaign",
-    description:
-      "Structured reminders across the confirmed list, resolving diary conflicts before the day.",
-  },
-  {
-    when: "Event day",
-    title: "Delegate attendance",
-    description:
-      "Your delegates attend, with full profiles already in your team's hands.",
   },
 ];
 

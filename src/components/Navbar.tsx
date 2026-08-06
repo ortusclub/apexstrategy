@@ -8,7 +8,7 @@ import { CTA_PRIMARY } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/delegate-acquisition", label: "Delegate Acquisition" },
-  { href: "/#process", label: "How It Works" },
+  { href: "/#process", label: "How it works" },
   { href: "/#services", label: "Services" },
   { href: "/faq", label: "FAQ" },
 ];
@@ -81,7 +81,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/#contact"
+            href="/contact"
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors"
           >
             {CTA_PRIMARY}
@@ -143,7 +143,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/#contact"
+            href="/contact"
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-5 py-3 my-3 rounded-lg text-sm transition-colors text-center"
             onClick={() => setMobileOpen(false)}
           >

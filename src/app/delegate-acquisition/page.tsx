@@ -13,12 +13,10 @@ import { ArrowRightIcon, CheckIcon } from "@/components/icons";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { CTA_PRIMARY, getService } from "@/lib/site";
 import {
-  CAMPAIGN_TIMELINE,
+  CAMPAIGN_STAGES,
   FAILURE_MODES,
-  METHODOLOGY,
   NO_WIN_NO_FEE,
   OUTCOMES,
-  PROCESS,
   USE_CASES,
 } from "@/content/delegate-acquisition";
 
@@ -52,7 +50,7 @@ const crumbs = [
 function PrimaryCta({ label = CTA_PRIMARY }: { label?: string }) {
   return (
     <Link
-      href="/#contact"
+      href="/contact"
       className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
     >
       {label} <ArrowRightIcon className="w-4 h-4" />
@@ -172,89 +170,19 @@ export default function DelegateAcquisitionPage() {
           </div>
         </section>
 
-        {/* METHODOLOGY */}
+        {/* METHODOLOGY × CAMPAIGN TIMELINE — one sequence, stage by week */}
         <section className="py-24">
           <div className="max-w-5xl mx-auto px-6">
-            <SectionHeading
-              eyebrow="Our methodology"
-              title="How we build a room, stage by stage."
-              intro="Eight stages, run the same way on every campaign. Nothing is left to a mass mailing."
-            />
-
-            <ol className="grid md:grid-cols-2 gap-5 mt-14">
-              {METHODOLOGY.map((step, i) => (
-                <li
-                  key={step.title}
-                  className="bg-bg-card border border-border rounded-2xl p-7 reveal"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span
-                      className="w-9 h-9 rounded-full bg-[rgba(0,208,132,0.1)] border border-[rgba(0,208,132,0.25)] flex items-center justify-center text-accent font-bold text-sm flex-shrink-0"
-                      aria-hidden="true"
-                    >
-                      {i + 1}
-                    </span>
-                    <h3 className="text-lg font-semibold text-white">
-                      {step.title}
-                    </h3>
-                  </div>
-                  <p className="text-text-muted text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </li>
-              ))}
-            </ol>
-
-            <div className="mt-12">
-              <PrimaryCta />
-            </div>
-          </div>
-        </section>
-
-        {/* HOW IT WORKS */}
-        <section className="py-24 bg-bg-secondary">
-          <div className="max-w-5xl mx-auto px-6">
-            <SectionHeading
-              eyebrow="How it works"
-              title="From first call to full room."
-              intro="What working with us actually looks like, start to finish."
-              align="center"
-            />
-
-            <ol className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
-              {PROCESS.map((step, i) => (
-                <li
-                  key={step.title}
-                  className="bg-bg-card border border-border rounded-2xl p-7 reveal hover:border-[rgba(146,212,205,0.2)] transition-colors"
-                >
-                  <div
-                    className="text-accent font-bold text-sm mb-3"
-                    aria-hidden="true"
-                  >
-                    Step {i + 1}
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-text-muted text-sm leading-relaxed">
-                    {step.description}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* CAMPAIGN TIMELINE */}
-        <section className="py-24">
-          <div className="max-w-5xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              <div className="reveal">
+            <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-16 items-start">
+              <div className="reveal lg:sticky lg:top-28">
                 <SectionHeading
-                  eyebrow="Campaign timeline"
-                  title="What a typical campaign looks like."
-                  intro="An indicative seven-week run. Short-notice campaigns compress the same phases — we have filled rooms in under two weeks."
+                  eyebrow="Our methodology"
+                  title="Every stage, and the week it happens."
+                  intro="Eight stages, run the same way on every campaign. This is an indicative seven-week run — short-notice campaigns compress the same stages rather than skipping any of them."
                 />
+                <div className="mt-10">
+                  <PrimaryCta />
+                </div>
               </div>
 
               <div className="relative reveal">
@@ -264,24 +192,24 @@ export default function DelegateAcquisitionPage() {
                 ></div>
 
                 <ol className="flex flex-col gap-9">
-                  {CAMPAIGN_TIMELINE.map((phase, i) => (
-                    <li key={phase.title} className="relative pl-14">
+                  {CAMPAIGN_STAGES.map((stage, i) => (
+                    <li key={stage.title} className="relative pl-14">
                       <div
                         className={`absolute left-3 top-1 w-5 h-5 rounded-full border-4 border-bg-primary ${
-                          i === CAMPAIGN_TIMELINE.length - 1
+                          i === CAMPAIGN_STAGES.length - 1
                             ? "bg-accent"
                             : "bg-text-muted"
                         }`}
                         aria-hidden="true"
                       ></div>
                       <div className="text-xs text-accent font-semibold uppercase tracking-wider mb-1">
-                        {phase.when}
+                        {stage.when}
                       </div>
-                      <h3 className="text-lg font-semibold text-white mb-1">
-                        {phase.title}
+                      <h3 className="text-lg font-semibold text-white mb-2">
+                        {stage.title}
                       </h3>
                       <p className="text-text-light text-sm leading-relaxed">
-                        {phase.description}
+                        {stage.description}
                       </p>
                     </li>
                   ))}
@@ -305,7 +233,7 @@ export default function DelegateAcquisitionPage() {
                     </span>
                   </>
                 }
-                intro="No retainers. No setup fees. You pay for confirmed delegates who meet the criteria you signed off — and nothing else."
+                intro="No retainers. No setup fees. You pay for confirmed delegates who meet your criteria — nothing else."
               />
 
               <div className="grid md:grid-cols-2 gap-5 mt-12">

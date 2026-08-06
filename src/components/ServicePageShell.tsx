@@ -69,7 +69,7 @@ export default function ServicePageShell({
 
               <div className="mt-10">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center gap-2"
                 >
                   {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />

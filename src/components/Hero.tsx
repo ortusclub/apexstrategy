@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRightIcon, BoltIcon, CheckIcon } from "@/components/icons";
 import { CTA_PRIMARY } from "@/lib/site";
 
@@ -12,7 +13,7 @@ export default function Hero() {
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-0.5 bg-accent"></span>
               <span className="text-accent text-xs font-semibold tracking-widest uppercase">
-                B2B Delegate Acquisition
+                B2B delegate acquisition
               </span>
             </div>
 
@@ -32,7 +33,7 @@ export default function Hero() {
               <div className="flex items-center gap-2 bg-[rgba(0,208,132,0.1)] border border-[rgba(0,208,132,0.25)] rounded-full px-4 py-2 text-sm">
                 <CheckIcon className="w-4 h-4 text-accent flex-shrink-0" />
                 <span className="text-accent-secondary">
-                  No Win, No Fee — you only pay for confirmed attendees
+                  No win, no fee — you only pay for confirmed attendees
                 </span>
               </div>
               <div className="flex items-center gap-2 bg-[rgba(245,158,11,0.1)] border border-[rgba(245,158,11,0.25)] rounded-full px-4 py-2 text-sm">
@@ -44,17 +45,17 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
                 {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-              </a>
+              </Link>
               <a
                 href="#timeline"
                 className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center"
               >
-                Sound Familiar?
+                Sound familiar?
               </a>
             </div>
           </div>
@@ -64,7 +65,7 @@ export default function Hero() {
             <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl">
               <Image
                 src="/images/APEX-Strategy-Asset.webp"
-                alt="Apex Strategy - B2B Delegate Acquisition"
+                alt="Apex Strategy - B2B delegate acquisition"
                 width={600}
                 height={450}
                 className="w-full object-cover"

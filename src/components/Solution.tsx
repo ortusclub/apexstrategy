@@ -55,12 +55,12 @@ export default function Solution() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
                 {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-              </a>
+              </Link>
               <Link
                 href="/delegate-acquisition"
                 className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"

@@ -7,8 +7,9 @@ import PainCards from "@/components/PainCards";
 import Solution from "@/components/Solution";
 import Process from "@/components/Process";
 import Testimonials from "@/components/Testimonials";
+import EventShowcase from "@/components/EventShowcase";
 import OtherServices from "@/components/OtherServices";
-import ContactForm from "@/components/ContactForm";
+import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -26,8 +27,9 @@ export default function Home() {
         <Solution />
         <Process />
         <Testimonials />
+        <EventShowcase />
         <OtherServices />
-        <ContactForm />
+        <CtaSection />
       </main>
       <Footer />
     </>

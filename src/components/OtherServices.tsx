@@ -44,7 +44,7 @@ export default function OtherServices() {
                 sends people to the contact form, not to a thin service page.
               */}
               <Link
-                href="/#contact"
+                href="/contact"
                 className="text-accent hover:text-accent-hover font-medium text-sm inline-flex items-center gap-1.5 transition-colors rounded-sm"
               >
                 {CTA_PRIMARY}

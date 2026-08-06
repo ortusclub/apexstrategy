@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowRightIcon, BoltIcon, CheckIcon } from "@/components/icons";
 
 export default function Hero() {
   return (
@@ -28,13 +29,13 @@ export default function Hero() {
 
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
               <div className="flex items-center gap-2 bg-[rgba(0,208,132,0.1)] border border-[rgba(0,208,132,0.25)] rounded-full px-4 py-2 text-sm">
-                <span className="text-accent">&#10003;</span>
+                <CheckIcon className="w-4 h-4 text-accent flex-shrink-0" />
                 <span className="text-accent-secondary">
                   No Win, No Fee — you only pay for confirmed attendees
                 </span>
               </div>
               <div className="flex items-center gap-2 bg-[rgba(245,158,11,0.1)] border border-[rgba(245,158,11,0.25)] rounded-full px-4 py-2 text-sm">
-                <span className="text-orange-urgent">&#9889;</span>
+                <BoltIcon className="w-4 h-4 text-orange-urgent flex-shrink-0" />
                 <span className="text-orange-urgent">
                   Short notice? We deliver in days, not months
                 </span>
@@ -46,7 +47,7 @@ export default function Hero() {
                 href="#contact"
                 className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
-                Get a Quote <span>&rarr;</span>
+                Get a Quote <ArrowRightIcon className="w-4 h-4" />
               </a>
               <a
                 href="#timeline"

@@ -1,17 +1,19 @@
+import { ClockIcon, CostIcon, SeniorityIcon } from "@/components/icons";
+
 export default function PainCards() {
   const cards = [
     {
-      icon: "\u23f3",
+      Icon: ClockIcon,
       title: "Months of outreach, uncertain results",
       desc: "Your team spends weeks sending emails and making calls. Response rates are low, and you can\u2019t predict who\u2019ll actually show up.",
     },
     {
-      icon: "\ud83d\udc64",
+      Icon: SeniorityIcon,
       title: "Wrong seniority, wrong fit",
       desc: "You need C-suite and VP-level attendees. Instead, you\u2019re getting junior staff who can\u2019t make purchasing decisions.",
     },
     {
-      icon: "\ud83d\udcb8",
+      Icon: CostIcon,
       title: "Expensive no-shows",
       desc: "People confirm, then don\u2019t turn up. You\u2019ve paid for catering, venue, and travel \u2014 for half-empty tables.",
     },
@@ -34,12 +36,12 @@ export default function PainCards() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {cards.map((card, i) => (
+          {cards.map((card) => (
             <div
-              key={i}
+              key={card.title}
               className="pain-card bg-bg-card border border-border rounded-2xl p-8 reveal"
             >
-              <div className="text-4xl mb-5">{card.icon}</div>
+              <card.Icon className="w-9 h-9 text-red-pain mb-5" />
               <h3 className="text-xl font-semibold text-white mb-3">
                 {card.title}
               </h3>

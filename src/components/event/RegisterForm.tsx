@@ -66,7 +66,10 @@ export default function RegisterForm() {
           </p>
 
           {sent ? (
-            <p className="text-accent text-lg font-semibold leading-relaxed">
+            <p
+              role="status"
+              className="text-accent text-lg font-semibold leading-relaxed"
+            >
               {status.message}
             </p>
           ) : (
@@ -118,7 +121,9 @@ export default function RegisterForm() {
                   {status.kind === "submitting" ? "Submitting…" : "Request seat →"}
                 </button>
                 {status.kind === "error" && (
-                  <p className="text-[#f87171] text-sm">{status.message}</p>
+                  <p role="alert" className="text-[#f87171] text-sm">
+                    {status.message}
+                  </p>
                 )}
               </div>
             </form>

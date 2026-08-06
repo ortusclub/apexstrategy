@@ -1,13 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
+
+const FIELD_CLASS =
+  "w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors";
+
+const LABEL_CLASS = "block text-text-light text-sm mb-1.5";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const id = useId();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const fieldId = (name: string) => `${id}-${name}`;
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    // Guard against double submission from a fast second click or Enter press.
+    if (submitting) return;
+
+    setSubmitting(true);
+    setError(null);
+
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const json = (await res.json()) as { ok: boolean; message?: string };
+
+      if (!res.ok || !json.ok) {
+        setError(json.message ?? "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError(
+        "We couldn't reach the server. Check your connection and try again.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -50,8 +87,24 @@ export default function ContactForm() {
           {/* Right - Form */}
           <div className="reveal">
             {submitted ? (
-              <div className="bg-bg-card border border-border rounded-2xl p-8 text-center">
-                <div className="text-4xl mb-4">&#10003;</div>
+              <div
+                className="bg-bg-card border border-border rounded-2xl p-8 text-center"
+                role="status"
+              >
+                <svg
+                  className="w-12 h-12 text-accent mx-auto mb-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d="M9 12l2 2 4-4" />
+                  <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
                 <h3 className="text-2xl font-bold text-white mb-2">
                   Thanks for reaching out!
                 </h3>
@@ -64,62 +117,78 @@ export default function ContactForm() {
                 onSubmit={handleSubmit}
                 className="bg-bg-card border border-border rounded-2xl p-8 space-y-5"
               >
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-text-light text-sm mb-1.5">
+                    <label className={LABEL_CLASS} htmlFor={fieldId("firstName")}>
                       First Name
                     </label>
                     <input
+                      id={fieldId("firstName")}
+                      name="firstName"
                       type="text"
                       required
-                      className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors"
+                      autoComplete="given-name"
+                      className={FIELD_CLASS}
                       placeholder="John"
                     />
                   </div>
                   <div>
-                    <label className="block text-text-light text-sm mb-1.5">
+                    <label className={LABEL_CLASS} htmlFor={fieldId("lastName")}>
                       Last Name
                     </label>
                     <input
+                      id={fieldId("lastName")}
+                      name="lastName"
                       type="text"
                       required
-                      className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors"
+                      autoComplete="family-name"
+                      className={FIELD_CLASS}
                       placeholder="Smith"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-text-light text-sm mb-1.5">
+                  <label className={LABEL_CLASS} htmlFor={fieldId("email")}>
                     Work Email
                   </label>
                   <input
+                    id={fieldId("email")}
+                    name="email"
                     type="email"
                     required
-                    className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors"
+                    autoComplete="email"
+                    inputMode="email"
+                    className={FIELD_CLASS}
                     placeholder="john@company.com"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-text-light text-sm mb-1.5">
+                  <label className={LABEL_CLASS} htmlFor={fieldId("company")}>
                     Company
                   </label>
                   <input
+                    id={fieldId("company")}
+                    name="company"
                     type="text"
                     required
-                    className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors"
+                    autoComplete="organization"
+                    className={FIELD_CLASS}
                     placeholder="Acme Corp"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-text-light text-sm mb-1.5">
+                  <label className={LABEL_CLASS} htmlFor={fieldId("eventType")}>
                     Event Type
                   </label>
                   <select
+                    id={fieldId("eventType")}
+                    name="eventType"
                     required
-                    className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition-colors appearance-none"
+                    defaultValue=""
+                    className={`${FIELD_CLASS} appearance-none`}
                   >
                     <option value="">Select event type...</option>
                     <option value="executive-dinner">Executive Dinner</option>
@@ -127,20 +196,21 @@ export default function ContactForm() {
                       Breakfast / Lunch Briefing
                     </option>
                     <option value="seminar-summit">Seminar / Summit</option>
-                    <option value="sporting-occasion">
-                      Sporting Occasion
-                    </option>
+                    <option value="sporting-occasion">Sporting Occasion</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-text-light text-sm mb-1.5">
+                  <label className={LABEL_CLASS} htmlFor={fieldId("timeframe")}>
                     How soon is your event?
                   </label>
                   <select
+                    id={fieldId("timeframe")}
+                    name="timeframe"
                     required
-                    className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:border-accent transition-colors appearance-none"
+                    defaultValue=""
+                    className={`${FIELD_CLASS} appearance-none`}
                   >
                     <option value="">Select timeframe...</option>
                     <option value="asap">ASAP / Under 2 weeks</option>
@@ -152,21 +222,47 @@ export default function ContactForm() {
                 </div>
 
                 <div>
-                  <label className="block text-text-light text-sm mb-1.5">
+                  <label className={LABEL_CLASS} htmlFor={fieldId("message")}>
                     Tell us more
                   </label>
                   <textarea
+                    id={fieldId("message")}
+                    name="message"
                     rows={4}
-                    className="w-full bg-bg-primary border border-border rounded-lg px-4 py-3 text-white text-sm placeholder-text-muted focus:outline-none focus:border-accent transition-colors resize-none"
+                    className={`${FIELD_CLASS} resize-none`}
                     placeholder="Tell us about your event, target audience, and how many delegates you need..."
                   ></textarea>
                 </div>
 
+                {/* Honeypot — hidden from people, irresistible to bots */}
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor={fieldId("website")}>
+                    Website (leave blank)
+                  </label>
+                  <input
+                    id={fieldId("website")}
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                {error && (
+                  <p
+                    role="alert"
+                    className="text-red-pain text-sm bg-[rgba(242,92,84,0.08)] border border-[rgba(242,92,84,0.25)] rounded-lg px-4 py-3"
+                  >
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3.5 rounded-lg text-base transition-colors"
+                  disabled={submitting}
+                  className="w-full bg-accent hover:bg-accent-hover text-bg-primary font-semibold py-3.5 rounded-lg text-base transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {submitting ? "Sending..." : "Submit"}
                 </button>
               </form>
             )}

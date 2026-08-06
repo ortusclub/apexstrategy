@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description:
     "An invitation-only executive dinner for North America's senior cybersecurity leaders. 30 June 2026 at Ada's on the River, Alexandria, VA. Hosted by Aphinia in partnership with Apex Strategy.",
   robots: { index: false, follow: false },
+  // Without this the root layout's canonical ("/") would be inherited here.
+  alternates: { canonical: "/event/security-leaders" },
 };
 
 const QUESTIONS = [
@@ -34,7 +36,7 @@ const ROLES = [
 
 export default function EventPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       {/* Sticky nav with co-branded lockup */}
       <header className="glass-nav sticky top-0 z-50 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

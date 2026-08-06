@@ -17,16 +17,18 @@ export default function Home() {
     <>
       <ScrollReveal />
       <Navbar />
-      <Hero />
-      <LogosBar />
-      <Timeline />
-      <NoWinNoFee />
-      <PainCards />
-      <Solution />
-      <Process />
-      <Testimonials />
-      <OtherServices />
-      <ContactForm />
+      <main id="main-content">
+        <Hero />
+        <LogosBar />
+        <Timeline />
+        <NoWinNoFee />
+        <PainCards />
+        <Solution />
+        <Process />
+        <Testimonials />
+        <OtherServices />
+        <ContactForm />
+      </main>
       <Footer />
     </>
   );

@@ -1,20 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { clean, isEmail, sendNotification } from "@/lib/mail";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 /**
  * Event registration handler.
  *
- * Validates the incoming submission and sends a formatted email to
- * driton@apexstrategy.io via Resend (https://resend.com).
- *
- * Required env vars (set in Vercel project settings):
- *   - RESEND_API_KEY      The transactional-email API key.
- *   - RESEND_FROM_EMAIL   Verified sender (e.g. notifications@apexstrategy.io).
- *
- * If RESEND_API_KEY is not configured, the route still returns success and
- * logs the payload server-side so submissions are never silently lost.
+ * Validates the incoming submission and emails a formatted summary via
+ * Resend. Env vars and fallback behaviour are documented in @/lib/mail.
  */
 
-const TO_EMAIL = "driton@apexstrategy.io";
 const EVENT_LABEL = "CISO Roundtable — 30 June 2026 — Alexandria, VA";
 
 type Payload = {
@@ -26,14 +20,6 @@ type Payload = {
   notes?: string;
   website?: string; // honeypot
 };
-
-function clean(s: unknown): string {
-  return typeof s === "string" ? s.trim() : "";
-}
-
-function isEmail(s: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
 
 export async function POST(req: NextRequest) {
   let payload: Payload = {};
@@ -74,7 +60,7 @@ export async function POST(req: NextRequest) {
 
   const subject = `[Event RSVP] ${EVENT_LABEL} — ${fields.name} (${fields.company})`;
 
-  const lines = [
+  const body = [
     `New seat request for ${EVENT_LABEL}`,
     "─".repeat(60),
     "",
@@ -87,44 +73,17 @@ export async function POST(req: NextRequest) {
     fields.notes ? `Notes / dietary:\n${fields.notes}\n` : null,
     `— submitted ${new Date().toISOString()}`,
     `IP:        ${req.headers.get("x-forwarded-for") ?? "unknown"}`,
-  ].filter(Boolean) as string[];
+  ]
+    .filter((line): line is string => line !== null)
+    .join("\n");
 
-  const body = lines.join("\n");
-
-  // Always log on the server (visible in Vercel logs)
-  console.log("[event-register]", subject, "\n", body);
-
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-
-  if (apiKey) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          from: fromEmail,
-          to: TO_EMAIL,
-          reply_to: `${fields.name} <${fields.email}>`,
-          subject,
-          text: body,
-        }),
-      });
-      if (!res.ok) {
-        const text = await res.text();
-        console.error("[event-register] Resend error:", res.status, text);
-      }
-    } catch (err) {
-      console.error("[event-register] Resend exception:", err);
-    }
-  } else {
-    console.warn(
-      "[event-register] RESEND_API_KEY not set — submission logged but no email sent.",
-    );
-  }
+  await sendNotification({
+    tag: "event-register",
+    to: CONTACT_EMAIL,
+    subject,
+    body,
+    replyTo: `${fields.name} <${fields.email}>`,
+  });
 
   return NextResponse.json({
     ok: true,

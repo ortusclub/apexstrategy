@@ -8,12 +8,12 @@ import JsonLd from "@/components/JsonLd";
 import LogosBar from "@/components/LogosBar";
 import ScrollReveal from "@/components/ScrollReveal";
 import SectionHeading from "@/components/SectionHeading";
+import WhyCampaignsFail from "@/components/WhyCampaignsFail";
 import { ArrowRightIcon, CheckIcon } from "@/components/icons";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { CTA_PRIMARY, getService } from "@/lib/site";
 import {
   CAMPAIGN_STAGES,
-  FAILURE_MODES,
   NO_WIN_NO_FEE,
   OUTCOMES,
   USE_CASES,
@@ -110,13 +110,13 @@ export default function DelegateAcquisitionPage() {
         <section className="py-24">
           <div className="max-w-6xl mx-auto px-6">
             <SectionHeading
-              eyebrow="Who this is for"
-              title="Built for Events Where Every Seat Matters"
-              intro="If your event succeeds or fails on who is in the room, this is the problem we solve."
+              eyebrow="Events we support"
+              title="Built for Executive Events"
+              intro="If your event depends on having the right people in the room, we can help."
               align="center"
             />
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-14">
               {USE_CASES.map((useCase) => (
                 <div
                   key={useCase.title}
@@ -143,29 +143,7 @@ export default function DelegateAcquisitionPage() {
               intro="Six failure modes account for most under-filled rooms. Each one is avoidable."
             />
 
-            <div className="flex flex-col gap-4 mt-14">
-              {FAILURE_MODES.map((mode) => (
-                <div
-                  key={mode.problem}
-                  className="bg-bg-card border border-border rounded-2xl p-7 reveal"
-                >
-                  <h3 className="text-lg font-semibold text-white mb-3">
-                    {mode.problem}
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-5">
-                    <p className="text-text-muted text-sm leading-relaxed">
-                      {mode.why}
-                    </p>
-                    <div className="flex gap-3 md:border-l md:border-border md:pl-5">
-                      <CheckIcon className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                      <p className="text-text-light text-sm leading-relaxed">
-                        {mode.fix}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <WhyCampaignsFail />
           </div>
         </section>
 

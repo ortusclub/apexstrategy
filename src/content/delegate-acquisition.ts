@@ -18,81 +18,95 @@ export const OUTCOMES = [
 
 export type UseCase = { title: string; description: string };
 
+/** Six cards, each a single sentence of roughly equal length. */
 export const USE_CASES: UseCase[] = [
   {
     title: "Executive Dinners",
-    description:
-      "10–30 senior executives where every attendee needs to be the right fit.",
+    description: "10–30 senior decision-makers where every seat matters.",
   },
   {
     title: "Roundtables",
     description:
-      "Curated peer discussions that depend on executive-level participation.",
+      "Curated discussions designed for executive-level participation.",
   },
   {
     title: "Breakfast & Luncheons",
-    description:
-      "Smaller networking and thought leadership events designed for targeted audiences.",
+    description: "Invite-only networking and thought leadership events.",
   },
   {
     title: "Conferences",
-    description:
-      "Large-scale B2B conferences requiring qualified delegates across multiple industries.",
+    description: "B2B conferences requiring qualified delegates at scale.",
   },
   {
     title: "Summits",
-    description:
-      "Invitation-only executive summits where audience quality drives event success.",
+    description: "Executive summits where audience quality drives success.",
   },
   {
-    title: "Roadshows",
-    description:
-      "Multi-city executive events requiring consistent delegate acquisition across locations.",
-  },
-  {
-    title: "Workshops & Briefings",
-    description:
-      "Focused educational sessions for decision-makers and industry leaders.",
-  },
-  {
-    title: "Networking & Hospitality Events",
-    description:
-      "VIP receptions, customer appreciation events, and partner engagements where meaningful connections matter.",
+    title: "Roadshows & Briefings",
+    description: "Multi-city campaigns with consistent delegate acquisition.",
   },
 ];
 
-export type FailureMode = { problem: string; why: string; fix: string };
+/** Keys map to the icon set in @/components/icons via FAILURE_ICONS. */
+export type FailureModeIcon =
+  | "outreach"
+  | "targeting"
+  | "timing"
+  | "followUp"
+  | "data"
+  | "attendance";
+
+export type FailureMode = {
+  icon: FailureModeIcon;
+  problem: string;
+  /** One line, shown collapsed. */
+  summary: string;
+  why: string;
+  fix: string;
+};
 
 export const FAILURE_MODES: FailureMode[] = [
   {
-    problem: "Generic outreach",
-    why: "A templated invitation reads as a mass mailing to precisely the people who receive the most of them. Senior executives filter it out before the value of the event registers.",
-    fix: "Every approach references the individual's role, organisation and the reason the session is relevant to them — which is why our outreach is conducted by people, not by an automated sequence.",
+    icon: "outreach",
+    problem: "Generic Outreach",
+    summary: "Templated invitations fail to engage senior executives.",
+    why: "Senior executives receive hundreds of generic invitations. If a message feels automated, it is ignored before the event is even considered.",
+    fix: "Every invitation is personalised to the individual's role, organisation and reason for attending. Our outreach is delivered by people — not automated sequences.",
   },
   {
-    problem: "Poor targeting",
-    why: "Campaigns built on job-title keywords alone pull in the wrong seniority and the wrong function. The room fills, but not with buyers.",
-    fix: "We define the ideal customer profile with you before any outreach begins — titles, seniority, industry, company size and geography — and qualify against it on every conversation.",
+    icon: "targeting",
+    problem: "Poor Targeting",
+    summary: "Keyword targeting fills the room with the wrong people.",
+    why: "Campaigns built on job-title keywords pull in the wrong seniority and the wrong function. The room fills, but not with buyers.",
+    fix: "We agree your ideal customer profile before outreach begins, then qualify every conversation against it.",
   },
   {
-    problem: "Launching too late",
-    why: "Senior calendars are set weeks ahead. A campaign that starts a fortnight out is competing for time that has already been committed elsewhere.",
-    fix: "We can mobilise within days and run intensive short-notice campaigns, while being straight with you about what a compressed window realistically delivers.",
+    icon: "timing",
+    problem: "Launching Too Late",
+    summary: "Senior calendars are set weeks in advance.",
+    why: "A campaign starting a fortnight out is competing for time that has already been committed elsewhere.",
+    fix: "We mobilise within days and run intensive short-notice campaigns — while being straight about what a compressed window delivers.",
   },
   {
-    problem: "No structured follow-up",
-    why: "Most confirmations come after several touches. A single unanswered email is read as a decline when it usually is not one.",
-    fix: "Multi-channel follow-up across phone, email and LinkedIn, sequenced deliberately rather than repeated until the prospect disengages.",
+    icon: "followUp",
+    problem: "Weak Follow-up",
+    summary: "Most confirmations come after several touches.",
+    why: "A single unanswered email is read as a decline. Usually it is not one.",
+    fix: "Sequenced follow-up across phone, email and LinkedIn — deliberate, not repeated until the prospect disengages.",
   },
   {
-    problem: "Low-quality data",
-    why: "Bought lists decay quickly. Wrong numbers and dead addresses waste the outreach window and quietly cap the result.",
-    fix: "Prospect records are built and verified for each campaign, so outreach effort goes to people who are actually contactable and actually relevant.",
+    icon: "data",
+    problem: "Poor Data",
+    summary: "Bought lists decay fast and quietly cap results.",
+    why: "Wrong numbers and dead addresses burn the outreach window before the campaign has a chance.",
+    fix: "Prospect records are built and verified for each campaign, so effort goes to people who are contactable and relevant.",
   },
   {
-    problem: "No attendance management",
-    why: "A confirmation eight weeks out is not attendance on the day. Without reminders, no-show rates climb and the catering budget is already spent.",
-    fix: "Confirmations are managed through to the event, with a structured reminder campaign in the final week to protect attendance on the day.",
+    icon: "attendance",
+    problem: "Attendance Management",
+    summary: "A confirmation is not attendance on the day.",
+    why: "Without reminders, no-show rates climb — and the catering budget is already spent.",
+    fix: "Confirmations are managed through to the event, with a structured reminder campaign in the final week.",
   },
 ];
 

@@ -209,6 +209,77 @@ export function ShieldCheckIcon({ className }: IconProps) {
   );
 }
 
+/* ---------- Failure modes ---------- */
+
+export function MailIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" />
+      <path d="m3.5 7.5 8.5 6 8.5-6" />
+    </Svg>
+  );
+}
+
+export function TargetIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      <path d="M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
+      <path d="M12.5 11.5v.01" />
+    </Svg>
+  );
+}
+
+export function TimingIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M8 3v3" />
+      <path d="M16 3v3" />
+      <path d="M3 9h18" />
+      <path d="M21 11V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h7" />
+      <path d="M17.5 21a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
+      <path d="M17.5 15.8v1.7l1.2 1" />
+    </Svg>
+  );
+}
+
+export function FollowUpIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M3 12a9 9 0 0 1 15.3-6.4L21 8" />
+      <path d="M21 3v5h-5" />
+      <path d="M21 12a9 9 0 0 1-15.3 6.4L3 16" />
+      <path d="M3 21v-5h5" />
+    </Svg>
+  );
+}
+
+export function DataIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M3 8V6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8Z" />
+      <path d="M8 13h8" />
+    </Svg>
+  );
+}
+
+export function AttendanceIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M9 12.5l2 2 4-4" />
+      <path d="M12 3l7 3v5.5c0 4-3 7.5-7 9-4-1.5-7-5-7-9V6l7-3Z" />
+    </Svg>
+  );
+}
+
+export function MinusIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M5 12h14" />
+    </Svg>
+  );
+}
+
 export function GlobeIcon({ className }: IconProps) {
   return (
     <Svg className={className}>

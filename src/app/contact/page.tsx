@@ -6,9 +6,8 @@ import ContactForm from "@/components/ContactForm";
 import JsonLd from "@/components/JsonLd";
 import ScrollReveal from "@/components/ScrollReveal";
 import { breadcrumbSchema } from "@/lib/schema";
-import { CTA_PRIMARY } from "@/lib/site";
 
-const TITLE = "Book a Call";
+const TITLE = "Contact Us";
 const DESCRIPTION =
   "Tell us about your event and we'll show you how we can fill it with qualified decision-makers. No win, no fee — we reply within one business day.";
 
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
 
 const crumbs = [
   { name: "Home", path: "/" },
-  { name: CTA_PRIMARY, path: "/contact" },
+  { name: TITLE, path: "/contact" },
 ];
 
 export default function ContactPage() {

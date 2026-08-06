@@ -3,9 +3,10 @@ import Link from "next/link";
 import { CONTACT_EMAIL, LEGAL_NAME, LINKEDIN_URL } from "@/lib/site";
 
 const NAV = [
+  { href: "/", label: "Home" },
   { href: "/delegate-acquisition", label: "Delegate Acquisition" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+  { href: "/faq", label: "FAQs" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Footer() {

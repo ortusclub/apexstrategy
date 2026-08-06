@@ -8,7 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { FAQS } from "@/content/faq";
 
-const TITLE = "Frequently Asked Questions";
+const TITLE = "FAQs";
 const DESCRIPTION =
   "How no win, no fee delegate acquisition works: pricing, campaign timelines, delegate qualification, country coverage and what happens if attendance targets are missed.";
 
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 const crumbs = [
   { name: "Home", path: "/" },
-  { name: "FAQ", path: "/faq" },
+  { name: "FAQs", path: "/faq" },
 ];
 
 export default function FaqPage() {

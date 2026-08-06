@@ -37,11 +37,6 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen]);
 
-  // A route change should never leave the menu hanging open.
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   const isActive = (href: string) =>
     href.startsWith("/#") ? false : pathname === href;
 

@@ -39,8 +39,10 @@ export const metadata: Metadata = {
     images: [
       {
         url: OG_IMAGE,
-        width: 1200,
-        height: 900,
+        // Actual dimensions of the existing asset. It is square, so social
+        // cards will centre-crop it — see the notes on a dedicated OG image.
+        width: 1920,
+        height: 1920,
         alt: "Apex Strategy — B2B delegate acquisition for executive events",
       },
     ],

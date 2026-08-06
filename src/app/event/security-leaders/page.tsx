@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import RegisterForm from "@/components/event/RegisterForm";
 
 export const metadata: Metadata = {
@@ -300,7 +301,7 @@ export default function EventPage() {
 
       <footer className="border-t border-border py-10 text-center text-sm text-text-muted">
         <div className="flex justify-center gap-6 mb-3">
-          <a href="/" className="hover:text-accent transition-colors">Apex Strategy</a>
+          <Link href="/" className="hover:text-accent transition-colors">Apex Strategy</Link>
           <a href="mailto:driton@apexstrategy.io" className="hover:text-accent transition-colors">driton@apexstrategy.io</a>
         </div>
         <div>© 2026 Apex Guesting Limited &nbsp;·&nbsp; Convened with Aphinia</div>

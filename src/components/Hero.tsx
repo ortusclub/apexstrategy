@@ -1,6 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
+import HeroCarousel from "@/components/HeroCarousel";
 import { ArrowRightIcon, BoltIcon, CheckIcon } from "@/components/icons";
+import { ROUNDTABLE_SLIDES } from "@/content/roundtables";
 import { CTA_PRIMARY } from "@/lib/site";
 
 export default function Hero() {
@@ -51,32 +52,23 @@ export default function Hero() {
               >
                 {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
               </Link>
-              <a
-                href="#timeline"
+              <Link
+                href="/delegate-acquisition#methodology"
                 className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center"
               >
-                Sound familiar?
-              </a>
+                See How We Fill Events
+              </Link>
             </div>
           </div>
 
-          {/* Right column - Hero image */}
+          {/* Right column — roundtable carousel */}
           <div className="animate-slide-up-delay-2 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl">
-              <Image
-                src="/images/APEX-Strategy-Asset.webp"
-                alt="Apex Strategy - B2B delegate acquisition"
-                width={600}
-                height={450}
-                className="w-full object-cover"
-                style={{ aspectRatio: "4/3" }}
-                priority
-              />
-              {/* Bottom gradient overlay */}
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary/90 to-transparent"></div>
+            <HeroCarousel slides={ROUNDTABLE_SLIDES}>
+              {/* Bottom gradient overlay — must not swallow drag gestures */}
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary/90 to-transparent pointer-events-none"></div>
 
               {/* Floating stat boxes */}
-              <div className="absolute bottom-4 left-4 right-4 flex gap-3">
+              <div className="absolute bottom-4 left-4 right-4 flex gap-3 pointer-events-none">
                 <div className="flex-1 bg-bg-card/90 backdrop-blur-sm border border-border rounded-lg p-3 text-center">
                   <div className="text-accent text-xl font-bold">12+</div>
                   <div className="text-text-muted text-xs">Years</div>
@@ -90,7 +82,7 @@ export default function Hero() {
                   <div className="text-text-muted text-xs">Events</div>
                 </div>
               </div>
-            </div>
+            </HeroCarousel>
           </div>
         </div>
       </div>

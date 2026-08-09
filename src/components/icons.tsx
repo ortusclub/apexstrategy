@@ -290,3 +290,21 @@ export function GlobeIcon({ className }: IconProps) {
     </Svg>
   );
 }
+
+/* ---------- Carousel controls ---------- */
+
+export function ChevronLeftIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M15 19 8 12l7-7" />
+    </Svg>
+  );
+}
+
+export function ChevronRightIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="m9 5 7 7-7 7" />
+    </Svg>
+  );
+}

@@ -30,8 +30,8 @@ export default function PainCards() {
             </span>
             <span className="w-8 h-0.5 bg-accent"></span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Getting qualified guests is the hardest part of any event.
+          <h2 className="text-3xl md:text-4xl font-bold text-balance max-w-3xl mx-auto">
+            Attracting the Right Audience Is the Biggest Challenge
           </h2>
         </div>
 

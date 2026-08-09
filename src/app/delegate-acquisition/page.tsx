@@ -148,7 +148,8 @@ export default function DelegateAcquisitionPage() {
         </section>
 
         {/* METHODOLOGY × CAMPAIGN TIMELINE — one sequence, stage by week */}
-        <section className="py-24">
+        {/* #methodology is linked from the homepage hero — keep the id stable. */}
+        <section id="methodology" className="py-24">
           <div className="max-w-5xl mx-auto px-6">
             <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-16 items-start">
               <div className="reveal lg:sticky lg:top-28">

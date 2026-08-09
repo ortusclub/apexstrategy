@@ -52,15 +52,14 @@ export default function Solution() {
                 Our services
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              We get{" "}
-              <span className="text-accent">qualified decision-makers</span> to
-              your event. Every time.
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
+              <span className="text-accent">Delegate Acquisition</span> for
+              Executive Events
             </h2>
             <p className="text-text-light text-lg leading-relaxed mb-8">
-              Delegate acquisition is our core service. We fill executive events
-              with qualified decision-makers through targeted, multi-channel
-              outreach — on a genuine no win, no fee basis.
+              We fill executive events with qualified decision-makers through
+              targeted, multi-channel outreach — on a genuine no win, no fee
+              basis.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

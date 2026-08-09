@@ -30,9 +30,12 @@ export type DeliveredEvent = {
 
 export const DELIVERED_EVENTS: DeliveredEvent[] = [
   {
-    name: "Aphinia at Fal.Con",
+    name: "IT Security Leaders Après Dinner",
+    // CONFIRM: carried over from the previous "Aphinia at Fal.Con" entry,
+    // which was a Las Vegas campaign. Renaming and re-dating this card to
+    // 2026 may well have moved the venue with it — verify before publishing.
     location: "Las Vegas, United States",
-    year: "2025",
+    year: "2026",
     type: "Executive roundtable",
     description:
       "Delegate acquisition for a senior cybersecurity roundtable convened alongside a major industry conference, targeting CISOs and heads of security attending the wider event.",

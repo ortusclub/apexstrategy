@@ -128,49 +128,49 @@ export const CAMPAIGN_STAGES: CampaignStage[] = [
     when: "Week 1",
     title: "ICP definition",
     description:
-      "We agree exactly who counts as a qualified delegate before anything else happens: job titles, seniority, functions, industries, company size and geography. This definition becomes the standard every delegate is measured against, and the basis on which you are invoiced.",
+      "We define exactly who qualifies — including seniority, role, industry, company size and geography.",
   },
   {
     when: "Weeks 1–2",
     title: "Prospect research",
     description:
-      "We build a targeted prospect list against that profile, working from named accounts where you have them and identifying comparable organisations where you do not. The list is built for your campaign rather than pulled from a static database.",
+      "We build a targeted prospect list around your ideal delegate profile and named accounts.",
   },
   {
     when: "Week 2",
     title: "Data verification",
     description:
-      "Contact records are verified before outreach begins — role and organisation confirmed, direct contact details validated. Effort is spent on reaching people, not on discovering that a record is three years out of date.",
+      "We verify roles, companies and contact details before outreach begins.",
   },
   {
     when: "Weeks 3–6",
     title: "Multi-channel outreach",
     description:
-      "Outreach runs across phone, email and LinkedIn, conducted by people who can hold a conversation about the subject matter. Each approach is specific to the individual and the reason the session is relevant to them.",
+      "We engage prospects through phone, email and LinkedIn with relevant, personalised messaging.",
   },
   {
     when: "Weeks 3–6",
     title: "Qualification",
     description:
-      "Interest is not the same as fit. Every prospect who engages is qualified against the agreed criteria — confirming seniority, remit and relevance — before they are counted as a delegate.",
+      "Every engaged prospect is checked against your agreed criteria before they count as a delegate.",
   },
   {
     when: "Weeks 4–7",
     title: "Confirmation",
     description:
-      "Qualified delegates are formally confirmed and their details recorded. You see who has committed as the campaign progresses, rather than receiving a list at the end.",
+      "Qualified delegates are formally confirmed and tracked throughout the campaign.",
   },
   {
     when: "Final week",
     title: "Reminder campaign",
     description:
-      "In the run-up to the event we run a structured reminder programme across the confirmed list, addressing diary conflicts early rather than discovering them on the day.",
+      "We follow up with confirmed delegates to reduce drop-offs and maximise attendance.",
   },
   {
     when: "Event day",
     title: "Delegate delivery",
     description:
-      "You receive detailed attendee profiles ahead of the event — who is attending, their role and their organisation — so your team can prepare properly for the conversations in the room.",
+      "You receive attendee profiles ahead of the event, giving your team the context needed for better conversations.",
   },
 ];
 
@@ -178,23 +178,23 @@ export type FeePoint = { title: string; description: string };
 
 export const NO_WIN_NO_FEE: FeePoint[] = [
   {
-    title: "When you pay",
+    title: "When You Pay",
     description:
-      "After delegates confirm — never before. There are no retainers, no setup fees and no charge for the research and outreach that produces them. If the campaign delivers nothing, it costs you nothing.",
+      "Only after a qualified delegate confirms attendance. If we deliver nothing, you pay nothing.",
   },
   {
-    title: "How success is measured",
+    title: "What Counts as a Delegate",
     description:
-      "Against the attendee criteria agreed in writing at the start of the campaign. Not against activity, not against interest — against confirmed delegates who match the profile you signed off.",
+      "A confirmed attendee who meets your agreed criteria — including seniority, role, industry, company size, and geography.",
   },
   {
-    title: "What qualifies as a delegate",
+    title: "How Success Is Measured",
     description:
-      "An individual who meets every agreed criterion — seniority, job title, industry, company size, geography — and who has personally confirmed they will attend. Anyone outside that definition is not billable.",
+      "By qualified, confirmed delegates, not outreach activity, responses, or registrations.",
   },
   {
-    title: "Why this reduces your risk",
+    title: "Why It Works",
     description:
-      "The commercial risk of the campaign sits with us rather than with you. Your budget is committed against delegates you can count, at a point where you already know the room will be full.",
+      "Your budget is tied to real attendees, not promises. We take on the campaign risk so you don’t have to.",
   },
 ];

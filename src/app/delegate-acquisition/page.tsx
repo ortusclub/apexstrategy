@@ -138,9 +138,9 @@ export default function DelegateAcquisitionPage() {
         <section className="py-24 bg-bg-secondary">
           <div className="max-w-5xl mx-auto px-6">
             <SectionHeading
-              eyebrow="Why campaigns fail"
-              title="Why delegate acquisition usually goes wrong."
-              intro="Six failure modes account for most under-filled rooms. Each one is avoidable."
+              eyebrow="Why delegate acquisition fails"
+              title="The Six Reasons Events Struggle to Attract the Right Delegates"
+              intro="The problem is rarely the event itself. It’s reaching, engaging, and converting the right decision-makers."
             />
 
             <WhyCampaignsFail />
@@ -155,8 +155,8 @@ export default function DelegateAcquisitionPage() {
               <div className="reveal lg:sticky lg:top-28">
                 <SectionHeading
                   eyebrow="Our methodology"
-                  title="Every stage, and the week it happens."
-                  intro="Eight stages, run the same way on every campaign. This is an indicative seven-week run — short-notice campaigns compress the same stages rather than skipping any of them."
+                  title="A clear process from target audience to confirmed delegates."
+                  intro="Every campaign follows the same proven process. We adapt the timeline when needed, but never skip the steps that ensure delegate quality."
                 />
                 <div className="mt-10">
                   <PrimaryCta />
@@ -205,13 +205,11 @@ export default function DelegateAcquisitionPage() {
                 eyebrow="Commercial model"
                 title={
                   <>
-                    No win, no fee.{" "}
-                    <span className="text-accent">
-                      The risk sits with us.
-                    </span>
+                    No Win, No Fee.{" "}
+                    <span className="text-accent">The Risk Is Ours.</span>
                   </>
                 }
-                intro="No retainers. No setup fees. You pay for confirmed delegates who meet your criteria — nothing else."
+                intro="No retainers. No setup fees. You only pay for confirmed delegates who meet your agreed criteria."
               />
 
               <div className="grid md:grid-cols-2 gap-5 mt-12">

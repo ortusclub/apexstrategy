@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 type Status =
   | { kind: "idle" }
@@ -47,7 +48,7 @@ export default function RegisterForm() {
       setStatus({
         kind: "error",
         message:
-          "Network error — please try again, or email driton@apexstrategy.io directly.",
+          `Network error — please try again, or email ${CONTACT_EMAIL} directly.`,
       });
     }
   }
@@ -66,7 +67,10 @@ export default function RegisterForm() {
           </p>
 
           {sent ? (
-            <p className="text-accent text-lg font-semibold leading-relaxed">
+            <p
+              role="status"
+              className="text-accent text-lg font-semibold leading-relaxed"
+            >
               {status.message}
             </p>
           ) : (
@@ -118,7 +122,9 @@ export default function RegisterForm() {
                   {status.kind === "submitting" ? "Submitting…" : "Request seat →"}
                 </button>
                 {status.kind === "error" && (
-                  <p className="text-[#f87171] text-sm">{status.message}</p>
+                  <p role="alert" className="text-[#f87171] text-sm">
+                    {status.message}
+                  </p>
                 )}
               </div>
             </form>

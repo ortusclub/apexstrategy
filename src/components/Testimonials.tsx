@@ -31,20 +31,22 @@ export default function Testimonials() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
+          {testimonials.map((t) => (
+            <figure
+              key={t.name}
               className="bg-bg-card border border-border rounded-2xl p-8 reveal"
             >
-              <div className="text-accent text-4xl mb-4">&ldquo;</div>
-              <p className="text-text-light leading-relaxed mb-6 italic">
+              <div className="text-accent text-4xl mb-4" aria-hidden="true">
+                &ldquo;
+              </div>
+              <blockquote className="text-text-light leading-relaxed mb-6 italic">
                 {t.quote}
-              </p>
-              <div>
+              </blockquote>
+              <figcaption>
                 <div className="font-semibold text-white">{t.name}</div>
                 <div className="text-text-muted text-sm">{t.role}</div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

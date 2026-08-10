@@ -1,28 +1,35 @@
+import {
+  AlertIcon,
+  ClipboardIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
+} from "@/components/icons";
+
 export default function Timeline() {
   const steps = [
     {
-      icon: "\ud83d\udccb",
+      Icon: ClipboardIcon,
       time: "8 weeks out",
       title: "You start outreach yourself",
       desc: "Internal teams send emails, make calls, and tap into networks. Early signs look promising.",
       dotColor: "bg-text-muted",
     },
     {
-      icon: "\ud83d\udcc9",
+      Icon: TrendingDownIcon,
       time: "4 weeks out",
       title: "Momentum stalls",
       desc: "Responses dry up. The people saying yes aren\u2019t the right seniority. Your team is stretched thin.",
       dotColor: "bg-text-muted",
     },
     {
-      icon: "\ud83d\udea8",
+      Icon: AlertIcon,
       time: "2 weeks out",
       title: "Panic sets in",
       desc: "Empty seats are looking likely. Senior leadership is asking questions. You need a solution fast.",
       dotColor: "bg-red-pain",
     },
     {
-      icon: "\ud83d\ude80",
+      Icon: TrendingUpIcon,
       time: "This is where we come in",
       title: "You call Apex Strategy",
       desc: "We mobilise immediately. Targeted outreach to qualified decision-makers. Seats fill. Event succeeds.",
@@ -58,15 +65,16 @@ export default function Timeline() {
             <div className="absolute left-5 top-2 bottom-2 w-0.5 timeline-line"></div>
 
             <div className="flex flex-col gap-10">
-              {steps.map((step, i) => (
-                <div key={i} className="relative pl-14">
+              {steps.map((step) => (
+                <div key={step.title} className="relative pl-14">
                   {/* Dot */}
                   <div
                     className={`absolute left-3 top-1 w-5 h-5 rounded-full ${step.dotColor} border-4 border-bg-primary`}
                   ></div>
 
-                  <div className="text-xs text-text-muted font-medium uppercase tracking-wider mb-1">
-                    {step.icon} {step.time}
+                  <div className="flex items-center gap-2 text-xs text-text-muted font-medium uppercase tracking-wider mb-1">
+                    <step.Icon className="w-4 h-4 flex-shrink-0" />
+                    <span>{step.time}</span>
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-1">
                     {step.title}

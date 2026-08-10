@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import RegisterForm from "@/components/event/RegisterForm";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Securing the Enterprise — A CISO Roundtable · 30 June 2026 · Alexandria, VA",
   description:
     "An invitation-only executive dinner for North America's senior cybersecurity leaders. 30 June 2026 at Ada's on the River, Alexandria, VA. Hosted by Aphinia in partnership with Apex Strategy.",
   robots: { index: false, follow: false },
+  // Without this the root layout's canonical ("/") would be inherited here.
+  alternates: { canonical: "/event/security-leaders" },
 };
 
 const QUESTIONS = [
@@ -34,7 +38,7 @@ const ROLES = [
 
 export default function EventPage() {
   return (
-    <main className="min-h-screen">
+    <main id="main-content" className="min-h-screen">
       {/* Sticky nav with co-branded lockup */}
       <header className="glass-nav sticky top-0 z-50 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -298,8 +302,8 @@ export default function EventPage() {
 
       <footer className="border-t border-border py-10 text-center text-sm text-text-muted">
         <div className="flex justify-center gap-6 mb-3">
-          <a href="/" className="hover:text-accent transition-colors">Apex Strategy</a>
-          <a href="mailto:driton@apexstrategy.io" className="hover:text-accent transition-colors">driton@apexstrategy.io</a>
+          <Link href="/" className="hover:text-accent transition-colors">Apex Strategy</Link>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-accent transition-colors">{CONTACT_EMAIL}</a>
         </div>
         <div>© 2026 Apex Guesting Limited &nbsp;·&nbsp; Convened with Aphinia</div>
       </footer>

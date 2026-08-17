@@ -12,7 +12,19 @@ export const SITE_NAME = "Apex Strategy";
 
 export const LEGAL_NAME = "Apex Guesting Limited";
 
+/** Public-facing address — footer, mailto links, structured data. */
 export const CONTACT_EMAIL = "info@apexstrategy.io";
+
+/**
+ * Everyone who should receive a copy of each form submission. Internal only:
+ * these are the recipients of the contact and event-registration routes, and
+ * are never rendered on the site.
+ */
+export const ENQUIRY_RECIPIENTS = [
+  CONTACT_EMAIL,
+  "antonio@ortusclub.com",
+  "jhan@apexstrategy.io",
+];
 
 export const LINKEDIN_URL =
   "https://www.linkedin.com/company/apex-guesting-partner/";

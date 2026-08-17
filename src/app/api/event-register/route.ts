@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { clean, isEmail, sendNotification } from "@/lib/mail";
-import { CONTACT_EMAIL } from "@/lib/site";
+import {
+  clean,
+  deliveryFailureMessage,
+  isEmail,
+  sendNotification,
+} from "@/lib/mail";
+import { CONTACT_EMAIL, ENQUIRY_RECIPIENTS } from "@/lib/site";
 
 /**
  * Event registration handler.
@@ -77,13 +82,20 @@ export async function POST(req: NextRequest) {
     .filter((line): line is string => line !== null)
     .join("\n");
 
-  await sendNotification({
+  const delivered = await sendNotification({
     tag: "event-register",
-    to: CONTACT_EMAIL,
+    to: ENQUIRY_RECIPIENTS,
     subject,
     body,
     replyTo: `${fields.name} <${fields.email}>`,
   });
+
+  if (!delivered) {
+    return NextResponse.json(
+      { ok: false, message: deliveryFailureMessage(CONTACT_EMAIL) },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({
     ok: true,

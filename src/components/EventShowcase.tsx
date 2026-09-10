@@ -1,4 +1,6 @@
+import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
+import { ArrowRightIcon } from "@/components/icons";
 import { DELIVERED_EVENTS } from "@/content/events";
 
 /**
@@ -45,6 +47,16 @@ export default function EventShowcase() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/events"
+            className="text-accent hover:text-accent-hover text-sm font-semibold inline-flex items-center gap-2 rounded-sm transition-colors"
+          >
+            See all our events
+            <ArrowRightIcon className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>

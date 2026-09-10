@@ -6,6 +6,7 @@ import {
   sendNotification,
 } from "@/lib/mail";
 import { CONTACT_EMAIL, ENQUIRY_RECIPIENTS } from "@/lib/site";
+import { dinnerEventLabel } from "@/content/dinners";
 
 /**
  * Event registration handler.
@@ -14,9 +15,16 @@ import { CONTACT_EMAIL, ENQUIRY_RECIPIENTS } from "@/lib/site";
  * Resend. Env vars and fallback behaviour are documented in @/lib/mail.
  */
 
-const EVENT_LABEL = "CISO Roundtable — 30 June 2026 — Alexandria, VA";
+/**
+ * Used when a submission does not name an event — which is every submission
+ * from the CISO Roundtable page, the only form that existed before the
+ * September dinners.
+ */
+const DEFAULT_EVENT_LABEL = "CISO Roundtable — 30 June 2026 — Alexandria, VA";
 
 type Payload = {
+  /** One of the dinner slugs in @/content/dinners. Absent on the roundtable form. */
+  eventId?: string;
   name?: string;
   title?: string;
   company?: string;
@@ -63,10 +71,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const subject = `[Event RSVP] ${EVENT_LABEL} — ${fields.name} (${fields.company})`;
+  // An unrecognised eventId falls back to the default label rather than being
+  // echoed into the email, so nothing user-supplied reaches the subject line.
+  const eventLabel = dinnerEventLabel(clean(payload.eventId)) ?? DEFAULT_EVENT_LABEL;
+
+  const subject = `[Event RSVP] ${eventLabel} — ${fields.name} (${fields.company})`;
 
   const body = [
-    `New seat request for ${EVENT_LABEL}`,
+    `New seat request for ${eventLabel}`,
     "─".repeat(60),
     "",
     `Name:    ${fields.name}`,

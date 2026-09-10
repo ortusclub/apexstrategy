@@ -9,7 +9,22 @@ type Status =
   | { kind: "success"; message: string }
   | { kind: "error"; message: string };
 
-export default function RegisterForm() {
+/**
+ * Seat request form.
+ *
+ * `eventId` tags the submission so the notification email names the right
+ * dinner. Omitting it keeps the original behaviour for the CISO Roundtable
+ * page, which was the only caller before the September dinners existed.
+ */
+export default function RegisterForm({
+  eventId,
+  heading = "Request your seat",
+  intro = "A quick 30 seconds. We'll confirm by email within one business day.",
+}: {
+  eventId?: string;
+  heading?: string;
+  intro?: string;
+} = {}) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -22,7 +37,10 @@ export default function RegisterForm() {
     setStatus({ kind: "submitting" });
 
     const data = new FormData(form);
-    const payload = Object.fromEntries(data.entries());
+    const payload = {
+      ...Object.fromEntries(data.entries()),
+      ...(eventId ? { eventId } : {}),
+    };
 
     try {
       const r = await fetch("/api/event-register", {
@@ -60,11 +78,9 @@ export default function RegisterForm() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="max-w-2xl mx-auto bg-bg-card border border-border rounded-2xl p-10 md:p-12">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
-            Request your seat
+            {heading}
           </h2>
-          <p className="text-text-light mb-8">
-            A quick 30 seconds. We&apos;ll confirm by email within one business day.
-          </p>
+          <p className="text-text-light mb-8">{intro}</p>
 
           {sent ? (
             <p

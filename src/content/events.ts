@@ -51,23 +51,23 @@ export const DELIVERED_EVENTS: DeliveredEvent[] = [
 ];
 
 /**
- * Upcoming events, newest first.
+ * Upcoming events, newest first — rendered on the public /events page.
  *
- * ⚠️ CONFIRM BEFORE PUBLISHING ⚠️
+ * ⚠️ PUBLIC LISTING — PRIVATE EVENTS DO NOT BELONG HERE ⚠️
  *
- * The single entry below is transcribed from the existing event page at
- * `/event/security-leaders` — nothing here has been invented. Two things
- * still need a decision before this list goes public:
+ * Anything in this array is advertised to every visitor and linked from the
+ * site's navigation. An invitation-only event is not public just because its
+ * page exists: `/event/security-leaders` is deliberately `noindex`, and
+ * listing it here made it discoverable to anyone browsing the site, which is
+ * why it was removed.
  *
- *   1. That event page is deliberately `noindex` and invitation-only.
- *      Linking to it from a public Events page makes it discoverable to
- *      anyone browsing the site. Set `href` to undefined to list the event
- *      without linking to its registration page.
- *   2. Whether the partner (Aphinia) is happy to be named here as well as
- *      on the event page itself.
+ * Before adding an entry, confirm that the event is genuinely public and
+ * that any partner named is content to be named. If an event is invitation
+ * only, keep its page unlisted and share the URL directly with guests.
  *
- * Add further events by appending to this array; the page renders whatever
- * it is given, and hides the section entirely when the array is empty.
+ * The page renders whatever this array contains and hides the section
+ * entirely when it is empty — the September dinners are listed separately
+ * from @/content/dinners.
  */
 
 export type UpcomingEvent = {
@@ -85,16 +85,4 @@ export type UpcomingEvent = {
   partner?: string;
 };
 
-export const UPCOMING_EVENTS: UpcomingEvent[] = [
-  {
-    name: "Securing the Enterprise — A CISO Roundtable",
-    date: "30 June 2026",
-    dateISO: "2026-06-30",
-    location: "Ada's on the River, Alexandria, VA",
-    type: "Executive dinner",
-    description:
-      "An invitation-only executive dinner for North America's senior cybersecurity leaders, covering AI adoption and risk, communicating cyber risk to the board, and where to invest in the year ahead.",
-    href: "/event/security-leaders",
-    partner: "Aphinia",
-  },
-];
+export const UPCOMING_EVENTS: UpcomingEvent[] = [];

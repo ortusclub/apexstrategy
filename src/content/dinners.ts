@@ -32,6 +32,12 @@ export type Dinner = {
   timeLabel: string;
   /** Public-facing area. Never the street address. */
   locality: string;
+  /**
+   * One-line blurb for the /events listing card. Deliberately separate from
+   * `evening`, which is the detail page's own opening copy — editing one does
+   * not silently rewrite the other.
+   */
+  summary: string;
   evening: [string, string];
   conversation: [string, string];
   peers: [string, string];
@@ -81,6 +87,8 @@ export const DINNERS: Dinner[] = [
     dateLabel: "Monday, 21 September 2026",
     timeLabel: "6:00 PM – 9:00 PM MST",
     locality: "Scottsdale, Arizona",
+    summary:
+      "A Scottsdale evening built for connection — senior security leaders meeting peers who face the same pressures, in a room small enough for real relationships to form.",
     evening: [opening("Scottsdale"), EVENING_DETAIL],
     conversation: CONVERSATION,
     peers: [
@@ -103,6 +111,8 @@ export const DINNERS: Dinner[] = [
     dateLabel: "Tuesday, 22 September 2026",
     timeLabel: "6:00 PM – 9:00 PM PST",
     locality: "Costa Mesa, California",
+    summary:
+      "Three hours in Costa Mesa where senior security leaders trade the insight that doesn't make it into conference talks — sharpened by people solving the same problems.",
     evening: [opening("Costa Mesa"), EVENING_DETAIL],
     conversation: CONVERSATION,
     peers: [
@@ -125,6 +135,8 @@ export const DINNERS: Dinner[] = [
     dateLabel: "Wednesday, 23 September 2026",
     timeLabel: "6:00 PM – 9:00 PM PST",
     locality: "La Jolla, California",
+    summary:
+      "A focused La Jolla evening for senior security leaders to walk away with something useful — perspective, ideas, and a few new answers worth taking back to the job.",
     evening: [opening("La Jolla"), EVENING_DETAIL],
     conversation: CONVERSATION,
     peers: [
@@ -144,6 +156,15 @@ export const DINNERS: Dinner[] = [
 /** Aphinia, described once and reused by every dinner page. */
 export const APHINIA_DESCRIPTION =
   "A private community for CISOs and senior cybersecurity executives — bringing together the people accountable for security across their organisations to meet their peers and speak openly.";
+
+/**
+ * The closing line of "The Conversation", naming whoever moderates that
+ * evening. Derived from the dinner's own co-host so the two can never drift
+ * apart — there is one source for who hosts each table.
+ */
+export function moderationLine(dinner: Dinner): string {
+  return `The conversation is co-hosted and moderated by ${dinner.coHost.name}, ${dinner.coHost.title} at ${dinner.coHost.company}, ensuring the discussion stays grounded in the real challenges security leaders face.`;
+}
 
 export function getDinner(slug: string): Dinner | undefined {
   return DINNERS.find((dinner) => dinner.slug === slug);

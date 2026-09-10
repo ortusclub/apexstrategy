@@ -11,6 +11,8 @@ import { ArrowRightIcon } from "@/components/icons";
 import { breadcrumbSchema } from "@/lib/schema";
 import { DELIVERED_EVENTS, UPCOMING_EVENTS } from "@/content/events";
 import { DINNERS, INVITATION_TERMS } from "@/content/dinners";
+import ExpandableGrid from "@/components/ExpandableGrid";
+import CollapsibleSection from "@/components/CollapsibleSection";
 
 const TITLE = "Our Events";
 const DESCRIPTION =
@@ -30,6 +32,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
   },
 };
+
+/** How many cards each section shows before the "view more" control. */
+const UPCOMING_VISIBLE = 6;
+const DELIVERED_VISIBLE = 4;
+
+/** Three across on desktop, two on tablet, one on mobile. */
+const CARD_GRID = "grid gap-6 sm:grid-cols-2 lg:grid-cols-3";
 
 const crumbs = [
   { name: "Home", path: "/" },
@@ -62,7 +71,7 @@ const upcoming: UpcomingCard[] = [
     dateLabel: dinner.dateLabel,
     place: dinner.locality,
     type: "Executive dinner",
-    description: dinner.evening[0],
+    description: dinner.summary,
     href: `/events/${dinner.slug}`,
     partner: "Aphinia",
     terms: INVITATION_TERMS,
@@ -102,9 +111,8 @@ export default function EventsPage() {
             </h1>
 
             <p className="text-text-light text-lg leading-relaxed max-w-2xl">
-              Executive dinners, roundtables and briefings — the gatherings we
-              are filling now, and a selection of those we have delivered
-              delegates for.
+              Executive dinners, roundtables, and briefings — browse what&apos;s
+              open to attend now.
             </p>
           </div>
         </section>
@@ -120,11 +128,15 @@ export default function EventsPage() {
                 intro="Invitation-only gatherings for senior decision-makers, hosted and filled by Apex Strategy."
               />
 
-              <div className="flex flex-col gap-6 mt-14">
+              <ExpandableGrid
+                initialCount={UPCOMING_VISIBLE}
+                moreLabel="View more events"
+                className={`${CARD_GRID} mt-14`}
+              >
                 {upcoming.map((event) => (
                   <article
                     key={event.name}
-                    className="bg-bg-card border border-border rounded-2xl p-8 reveal hover:border-[rgba(146,212,205,0.2)] transition-colors"
+                    className="bg-bg-card border border-border rounded-2xl p-8 reveal hover:border-[rgba(146,212,205,0.2)] transition-colors flex flex-col h-full"
                   >
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mb-4">
                       <span className="text-accent text-xs font-semibold tracking-widest uppercase">
@@ -137,7 +149,7 @@ export default function EventsPage() {
                       )}
                     </div>
 
-                    <h3 className="text-xl md:text-2xl font-semibold text-white mb-2">
+                    <h3 className="text-xl font-semibold text-white mb-2">
                       {event.name}
                     </h3>
 
@@ -153,7 +165,7 @@ export default function EventsPage() {
                       </p>
                     )}
 
-                    <p className={`text-text-light text-sm leading-relaxed max-w-2xl${
+                    <p className={`text-text-light text-sm leading-relaxed${
                       event.terms ? "" : " mt-3"
                     }`}>
                       {event.description}
@@ -162,7 +174,7 @@ export default function EventsPage() {
                     {event.href && (
                       <Link
                         href={event.href}
-                        className="text-accent hover:text-accent-hover text-sm font-semibold mt-6 inline-flex items-center gap-2 rounded-sm transition-colors"
+                        className="text-accent hover:text-accent-hover text-sm font-semibold mt-auto pt-6 inline-flex items-center gap-2 rounded-sm transition-colors"
                       >
                         View details and register
                         <ArrowRightIcon className="w-4 h-4" />
@@ -171,7 +183,7 @@ export default function EventsPage() {
                     )}
                   </article>
                 ))}
-              </div>
+              </ExpandableGrid>
             </div>
           </section>
         )}
@@ -180,39 +192,49 @@ export default function EventsPage() {
           <section className="py-24 bg-bg-secondary border-t border-border">
             <div className="max-w-5xl mx-auto px-6">
               <SectionHeading
-                eyebrow="Delivered campaigns"
+                eyebrow="Past Events"
                 title="Events we've filled."
                 intro="A selection of executive gatherings we have delivered delegates for."
               />
 
-              <div className="grid md:grid-cols-2 gap-6 mt-14">
-                {DELIVERED_EVENTS.map((event) => (
-                  <article
-                    key={event.name}
-                    className="bg-bg-card border border-border rounded-2xl p-8 reveal hover:border-[rgba(146,212,205,0.2)] transition-colors flex flex-col"
-                  >
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-accent text-xs font-semibold tracking-widest uppercase">
-                        {event.type}
-                      </span>
-                    </div>
+              <CollapsibleSection
+                id="past-events"
+                showLabel="Show past events"
+                hideLabel="Hide past events"
+              >
+                <ExpandableGrid
+                  initialCount={DELIVERED_VISIBLE}
+                  moreLabel="View more campaigns"
+                  className={`${CARD_GRID} pt-14`}
+                >
+                  {DELIVERED_EVENTS.map((event) => (
+                    <article
+                      key={event.name}
+                      className="bg-bg-card border border-border rounded-2xl p-8 reveal hover:border-[rgba(146,212,205,0.2)] transition-colors flex flex-col h-full"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="text-accent text-xs font-semibold tracking-widest uppercase">
+                          {event.type}
+                        </span>
+                      </div>
 
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      {event.name}
-                    </h3>
+                      <h3 className="text-xl font-semibold text-white mb-2">
+                        {event.name}
+                      </h3>
 
-                    <p className="text-text-muted text-sm mb-4">
-                      {event.location}
-                      <span aria-hidden="true"> · </span>
-                      {event.year}
-                    </p>
+                      <p className="text-text-muted text-sm mb-4">
+                        {event.location}
+                        <span aria-hidden="true"> · </span>
+                        {event.year}
+                      </p>
 
-                    <p className="text-text-light text-sm leading-relaxed">
-                      {event.description}
-                    </p>
-                  </article>
-                ))}
-              </div>
+                      <p className="text-text-light text-sm leading-relaxed">
+                        {event.description}
+                      </p>
+                    </article>
+                  ))}
+                </ExpandableGrid>
+              </CollapsibleSection>
             </div>
           </section>
         )}

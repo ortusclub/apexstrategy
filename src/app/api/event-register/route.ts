@@ -56,7 +56,17 @@ export async function POST(req: NextRequest) {
     notes: clean(payload.notes),
   };
 
-  for (const k of ["name", "title", "company", "email"] as const) {
+  // A dinner registration is only useful with a reachable number, and those
+  // forms mark phone as required — so enforce it here too. Browser validation
+  // is a convenience; this is the check that cannot be skipped. The roundtable
+  // form, which does not send an eventId, keeps phone optional.
+  const dinnerLabel = dinnerEventLabel(clean(payload.eventId));
+
+  const requiredFields = dinnerLabel
+    ? (["name", "title", "company", "email", "phone"] as const)
+    : (["name", "title", "company", "email"] as const);
+
+  for (const k of requiredFields) {
     if (fields[k] === "") {
       return NextResponse.json(
         { ok: false, message: "Please fill in all required fields." },
@@ -73,7 +83,7 @@ export async function POST(req: NextRequest) {
 
   // An unrecognised eventId falls back to the default label rather than being
   // echoed into the email, so nothing user-supplied reaches the subject line.
-  const eventLabel = dinnerEventLabel(clean(payload.eventId)) ?? DEFAULT_EVENT_LABEL;
+  const eventLabel = dinnerLabel ?? DEFAULT_EVENT_LABEL;
 
   const subject = `[Event RSVP] ${eventLabel} — ${fields.name} (${fields.company})`;
 

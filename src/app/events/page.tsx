@@ -125,7 +125,7 @@ export default function EventsPage() {
               <SectionHeading
                 eyebrow="Coming up"
                 title="Upcoming events."
-                intro="Invitation-only gatherings for senior decision-makers, hosted and filled by Apex Strategy."
+                intro="Invitation-only gatherings for senior decision-makers, powered by Apex Strategy."
               />
 
               <ExpandableGrid

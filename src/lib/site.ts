@@ -16,9 +16,9 @@ export const LEGAL_NAME = "Apex Guesting Limited";
 export const CONTACT_EMAIL = "info@apexstrategy.io";
 
 /**
- * Everyone who should receive a copy of each form submission. Internal only:
- * these are the recipients of the contact and event-registration routes, and
- * are never rendered on the site.
+ * Everyone who should receive a copy of Contact form and CISO Roundtable
+ * submissions. Dinner seat requests use their own list in the
+ * event-registration route. Internal only: never rendered on the site.
  */
 export const ENQUIRY_RECIPIENTS = [
   CONTACT_EMAIL,

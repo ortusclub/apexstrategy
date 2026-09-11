@@ -6,7 +6,7 @@ import {
   sendNotification,
 } from "@/lib/mail";
 import { CONTACT_EMAIL, ENQUIRY_RECIPIENTS } from "@/lib/site";
-import { dinnerEventLabel } from "@/content/dinners";
+import { dinnerEventLabel, type DinnerSlug } from "@/content/dinners";
 
 /**
  * Event registration handler.
@@ -21,6 +21,21 @@ import { dinnerEventLabel } from "@/content/dinners";
  * September dinners.
  */
 const DEFAULT_EVENT_LABEL = "CISO Roundtable — 30 June 2026 — Alexandria, VA";
+
+/**
+ * Dinner seat requests go to the events team rather than the wider
+ * ENQUIRY_RECIPIENTS list, which the roundtable form and the Contact form
+ * still use.
+ */
+const DINNER_RECIPIENTS = [CONTACT_EMAIL, "jhan@apexstrategy.io"];
+
+/**
+ * San Diego seat requests also go to Christine. Typed as a DinnerSlug so that
+ * renaming the slug in @/content/dinners breaks the build instead of silently
+ * dropping her from the list.
+ */
+const SAN_DIEGO_SLUG: DinnerSlug = "san-diego";
+const SAN_DIEGO_EXTRA_RECIPIENT = "christine@apexstrategy.io";
 
 type Payload = {
   /** One of the dinner slugs in @/content/dinners. Absent on the roundtable form. */
@@ -60,7 +75,8 @@ export async function POST(req: NextRequest) {
   // forms mark phone as required — so enforce it here too. Browser validation
   // is a convenience; this is the check that cannot be skipped. The roundtable
   // form, which does not send an eventId, keeps phone optional.
-  const dinnerLabel = dinnerEventLabel(clean(payload.eventId));
+  const eventId = clean(payload.eventId);
+  const dinnerLabel = dinnerEventLabel(eventId);
 
   const requiredFields = dinnerLabel
     ? (["name", "title", "company", "email", "phone"] as const)
@@ -104,9 +120,17 @@ export async function POST(req: NextRequest) {
     .filter((line): line is string => line !== null)
     .join("\n");
 
+  // Only a recognised dinner is re-routed; the roundtable form (no eventId)
+  // and any unrecognised eventId keep going to ENQUIRY_RECIPIENTS.
+  const recipients = !dinnerLabel
+    ? ENQUIRY_RECIPIENTS
+    : eventId === SAN_DIEGO_SLUG
+      ? [...DINNER_RECIPIENTS, SAN_DIEGO_EXTRA_RECIPIENT]
+      : DINNER_RECIPIENTS;
+
   const delivered = await sendNotification({
     tag: "event-register",
-    to: ENQUIRY_RECIPIENTS,
+    to: recipients,
     subject,
     body,
     replyTo: `${fields.name} <${fields.email}>`,

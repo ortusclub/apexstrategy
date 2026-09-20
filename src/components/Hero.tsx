@@ -1,8 +1,9 @@
 import Link from "next/link";
 import HeroCarousel from "@/components/HeroCarousel";
 import { ArrowRightIcon, BoltIcon, CheckIcon } from "@/components/icons";
-import { ROUNDTABLE_SLIDES } from "@/content/roundtables";
+import { HERO_SLIDES } from "@/content/hero-slides";
 import { CTA_PRIMARY } from "@/lib/site";
+import BookACallLink from "@/components/BookACallLink";
 
 export default function Hero() {
   return (
@@ -46,12 +47,11 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
+              <BookACallLink
                 className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
                 {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-              </Link>
+              </BookACallLink>
               <Link
                 href="/delegate-acquisition#methodology"
                 className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center"
@@ -59,11 +59,18 @@ export default function Hero() {
                 See How We Fill Events
               </Link>
             </div>
+
+            <p className="text-text-muted text-sm mt-6">
+              Trusted by leading B2B event organisers.
+            </p>
           </div>
 
-          {/* Right column — roundtable carousel */}
+          {/* Right column — the event formats we fill, not events we run */}
           <div className="animate-slide-up-delay-2 relative">
-            <HeroCarousel slides={ROUNDTABLE_SLIDES}>
+            <HeroCarousel
+              slides={HERO_SLIDES}
+              label="The kinds of executive event we fill with qualified delegates"
+            >
               {/* Bottom gradient overlay — must not swallow drag gestures */}
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary/90 to-transparent pointer-events-none"></div>
 

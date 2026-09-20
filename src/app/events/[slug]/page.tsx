@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const dinner = getDinner(slug);
   if (!dinner) return {};
 
-  const description = `${dinner.dateLabel}, ${dinner.locality}. An invitation-only dinner for CISOs and senior security leaders, co-hosted with Aphinia. Three hours, one table, no presentations.`;
+  const description = `${dinner.dateLabel}, ${dinner.locality}. An invitation-only dinner for CISOs and senior security leaders, hosted by Aphinia with delegate acquisition by Apex Strategy. Three hours, one table, no presentations.`;
   const url = `/events/${dinner.slug}`;
 
   return {
@@ -46,7 +46,7 @@ export default async function DinnerPage({ params }: Params) {
 
   const crumbs = [
     { name: "Home", path: "/" },
-    { name: "Our Events", path: "/events" },
+    { name: "Events", path: "/events" },
     { name: dinner.city, path: `/events/${dinner.slug}` },
   ];
 
@@ -159,6 +159,14 @@ export default async function DinnerPage({ params }: Params) {
                   <p className="text-white font-semibold mt-5">Aphinia</p>
                   <p className="text-text-light leading-relaxed mt-2">
                     {APHINIA_DESCRIPTION}
+                  </p>
+
+                  {/* Apex runs the guest list, not the evening. Stated here,
+                      beside the host, so the two roles are read together. */}
+                  <p className="text-text-muted text-sm leading-relaxed mt-4">
+                    Apex Strategy supports this dinner through delegate
+                    acquisition — we source, qualify and confirm the guest
+                    list. The evening itself is hosted by Aphinia.
                   </p>
 
                   <div className="bg-bg-card border border-border rounded-xl p-6 mt-6">

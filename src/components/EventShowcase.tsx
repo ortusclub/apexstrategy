@@ -4,8 +4,9 @@ import { ArrowRightIcon } from "@/components/icons";
 import { DELIVERED_EVENTS } from "@/content/events";
 
 /**
- * Portfolio of delivered campaigns. Content — and the caveats attached to
- * it — live in @/content/events.
+ * Portfolio of delivered campaigns — client events we supplied delegates for,
+ * never events Apex ran. Content, and the caveats attached to it, live in
+ * @/content/events.
  */
 export default function EventShowcase() {
   if (DELIVERED_EVENTS.length === 0) return null;
@@ -15,8 +16,8 @@ export default function EventShowcase() {
       <div className="max-w-5xl mx-auto px-6">
         <SectionHeading
           eyebrow="Delivered campaigns"
-          title="Events we've filled."
-          intro="A selection of executive gatherings we have delivered delegates for."
+          title="Events we've helped fill."
+          intro="A selection of client events we have delivered qualified delegates for."
           align="center"
         />
 
@@ -54,7 +55,7 @@ export default function EventShowcase() {
             href="/events"
             className="text-accent hover:text-accent-hover text-sm font-semibold inline-flex items-center gap-2 rounded-sm transition-colors"
           >
-            See all our events
+            See more events we&apos;ve supported
             <ArrowRightIcon className="w-4 h-4" />
           </Link>
         </div>

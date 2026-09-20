@@ -30,11 +30,32 @@ export const LINKEDIN_URL =
   "https://www.linkedin.com/company/apex-guesting-partner/";
 
 /**
- * One primary call to action across the whole site, and one secondary.
- * Keeping these in constants stops the wording drifting between sections.
+ * Two routes to a conversation, and only two. Booking is the primary action
+ * for anyone ready to talk; the enquiry form is for anyone who would rather
+ * send their event details first. Keeping the labels and paths in constants
+ * stops the pair drifting apart between sections.
+ *
+ * Neither invites the visitor to an Apex event — we do not run events. Both
+ * start a conversation about delegate acquisition for *their* event.
  */
 export const CTA_PRIMARY = "Book a Call";
-export const CTA_SECONDARY = "Request a Delegate Strategy";
+/**
+ * Where Book a Call points is NOT here — it leaves the site for Calendly and
+ * lives in @/lib/scheduler, driven by NEXT_PUBLIC_SCHEDULER_URL. Use
+ * @/components/BookACallLink rather than building the link by hand.
+ *
+ * What stays here is the enquiry route, which is a page on this site.
+ *
+ * Relative on purpose: it resolves to https://apexstrategy.io/... in
+ * production and still works against a local dev server.
+ */
+
+/**
+ * The quieter alternative. Labelled with CONTACT_EMAIL wherever it appears,
+ * but pointed at the enquiry form rather than a mailto: the form reaches the
+ * same inbox and arrives with the event details already filled in.
+ */
+export const CTA_SECONDARY_PATH = "/contact#enquiry-form";
 
 export const SITE_DESCRIPTION =
   "Apex Strategy delivers qualified decision-makers to your events. No win, no fee. 12+ years, 40+ countries, 2,500+ events.";

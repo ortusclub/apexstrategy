@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/icons";
-import { CTA_PRIMARY, CTA_SECONDARY } from "@/lib/site";
+import { CTA_PRIMARY, CTA_SECONDARY_PATH } from "@/lib/site";
+import BookACallLink from "@/components/BookACallLink";
 
 /**
- * The closing conversion block. Primary action is the contact form;
- * the secondary action points at the same place with different intent
- * wording, so there is only ever one destination to reason about.
+ * The closing conversion block, shown on the homepage, /events, /faq and
+ * /delegate-acquisition.
+ *
+ * Two plain actions: book a time on Calendly, or contact us. The second
+ * points at the enquiry form on /contact rather than a mailto, so the message
+ * arrives with the event details already attached.
  */
 export default function CtaSection() {
   return (
@@ -25,17 +29,16 @@ export default function CtaSection() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/contact"
+          <BookACallLink
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
           >
             {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-          </Link>
+          </BookACallLink>
           <Link
-            href="/contact"
+            href={CTA_SECONDARY_PATH}
             className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center"
           >
-            {CTA_SECONDARY}
+            Contact Us
           </Link>
         </div>
 

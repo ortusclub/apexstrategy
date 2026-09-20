@@ -20,16 +20,39 @@ export default function CollapsibleSection({
   showLabel,
   hideLabel,
   defaultOpen = false,
+  open: controlledOpen,
+  onToggle,
+  triggerClassName,
+  wrapperClassName = "mt-8",
+  chevronClassName = "w-4 h-4",
   children,
 }: {
   /** Region id, referenced by the toggle's aria-controls. */
   id: string;
-  showLabel: string;
-  hideLabel: string;
+  /** Text, or any node when the trigger needs to be a card rather than a link. */
+  showLabel: React.ReactNode;
+  hideLabel: React.ReactNode;
   defaultOpen?: boolean;
+  /**
+   * Pass `open` (with `onToggle`) to drive the disclosure from the parent —
+   * needed when something outside the toggle, such as a URL hash, has to open
+   * it. Omit both to let the component hold its own state.
+   */
+  open?: boolean;
+  onToggle?: () => void;
+  /** Replaces the default link styling on the toggle. */
+  triggerClassName?: string;
+  wrapperClassName?: string;
+  chevronClassName?: string;
   children: React.ReactNode;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const open = controlledOpen ?? uncontrolledOpen;
+  const toggle = () =>
+    controlledOpen === undefined
+      ? setUncontrolledOpen((wasOpen) => !wasOpen)
+      : onToggle?.();
+
   const regionRef = useRef<HTMLDivElement>(null);
 
   // ScrollReveal fades `.reveal` elements in when they scroll into view, but a
@@ -46,17 +69,20 @@ export default function CollapsibleSection({
 
   return (
     <>
-      <div className="mt-8">
+      <div className={wrapperClassName}>
         <button
           type="button"
-          onClick={() => setOpen((wasOpen) => !wasOpen)}
+          onClick={toggle}
           aria-expanded={open}
           aria-controls={id}
-          className="text-accent hover:text-accent-hover text-sm font-semibold inline-flex items-center gap-2 rounded-sm transition-colors"
+          className={
+            triggerClassName ??
+            "text-accent hover:text-accent-hover text-sm font-semibold inline-flex items-center gap-2 rounded-sm transition-colors"
+          }
         >
           {open ? hideLabel : showLabel}
           <ChevronRightIcon
-            className={`w-4 h-4 transition-transform duration-300 motion-reduce:transition-none ${
+            className={`${chevronClassName} flex-shrink-0 transition-transform duration-300 motion-reduce:transition-none ${
               open ? "-rotate-90" : "rotate-90"
             }`}
           />

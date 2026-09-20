@@ -7,6 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRightIcon, CheckIcon } from "@/components/icons";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { CTA_PRIMARY, SERVICES, type Service } from "@/lib/site";
+import BookACallLink from "@/components/BookACallLink";
 
 /**
  * Shared chrome for the three service routes. Each page supplies only its
@@ -68,12 +69,11 @@ export default function ServicePageShell({
               )}
 
               <div className="mt-10">
-                <Link
-                  href="/contact"
+                <BookACallLink
                   className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center gap-2"
                 >
                   {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-                </Link>
+                </BookACallLink>
               </div>
             </div>
           </section>

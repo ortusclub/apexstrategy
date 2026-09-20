@@ -18,6 +18,7 @@ import {
   OUTCOMES,
   USE_CASES,
 } from "@/content/delegate-acquisition";
+import BookACallLink from "@/components/BookACallLink";
 
 const service = getService("delegate-acquisition");
 
@@ -48,12 +49,11 @@ const crumbs = [
 /** Primary action, repeated at natural decision points down the page. */
 function PrimaryCta({ label = CTA_PRIMARY }: { label?: string }) {
   return (
-    <Link
-      href="/contact"
+    <BookACallLink
       className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
     >
       {label} <ArrowRightIcon className="w-4 h-4" />
-    </Link>
+    </BookACallLink>
   );
 }
 
@@ -72,7 +72,7 @@ export default function DelegateAcquisitionPage() {
             <div className="flex items-center gap-3 mt-8 mb-5">
               <span className="w-8 h-0.5 bg-accent" aria-hidden="true"></span>
               <span className="text-accent text-xs font-semibold tracking-widest uppercase">
-                Our core service
+                Your event. Our delegate acquisition.
               </span>
             </div>
 
@@ -112,7 +112,7 @@ export default function DelegateAcquisitionPage() {
             <SectionHeading
               eyebrow="Events we support"
               title="Built for Executive Events"
-              intro="If your event depends on having the right people in the room, we can help."
+              intro="You own the event, the agenda and the venue. If it depends on having the right people in the room, we fill it."
               align="center"
             />
 

@@ -259,10 +259,10 @@ export default function EventPage() {
         <div className="max-w-5xl mx-auto px-6">
           <div className="mb-10 max-w-3xl">
             <span className="inline-block text-accent text-xs font-semibold tracking-widest uppercase bg-[rgba(0,208,132,0.1)] border border-[rgba(0,208,132,0.25)] rounded-full px-4 py-1.5 mb-6">
-              The hosts
+              Host &amp; guesting partner
             </span>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Convened by Aphinia, in partnership with Apex Strategy.
+              Hosted by Aphinia. Guest list by Apex Strategy.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -278,7 +278,7 @@ export default function EventPage() {
                 className="h-10 w-auto mb-6"
               />
               <p className="text-text-light leading-relaxed">
-                Apex Strategy partners with leading organisations to design and deliver high-impact executive gatherings, creating the conditions for senior leaders to exchange ideas, build trust, and shape the thinking that drives their industries forward.
+                Apex Strategy is a B2B delegate acquisition partner. We work with the organisations behind executive gatherings to research, qualify and confirm the right senior leaders for the room — so the host can focus on the evening itself.
               </p>
             </div>
             <div className="bg-bg-card border border-border rounded-2xl p-10">

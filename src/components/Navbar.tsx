@@ -5,11 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { CTA_PRIMARY } from "@/lib/site";
+import BookACallLink from "@/components/BookACallLink";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/delegate-acquisition", label: "Delegate Acquisition" },
-  { href: "/events", label: "Our Events" },
+  { href: "/events", label: "Events" },
   { href: "/faq", label: "FAQs" },
   { href: "/contact", label: "Contact Us" },
 ];
@@ -81,12 +82,11 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
+          <BookACallLink
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors"
           >
             {CTA_PRIMARY}
-          </Link>
+          </BookACallLink>
         </div>
 
         {/* Mobile hamburger — 44px target to meet the WCAG touch-size guideline */}
@@ -143,13 +143,12 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/contact"
+          <BookACallLink
             className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-5 py-3 my-3 rounded-lg text-sm transition-colors text-center"
             onClick={() => setMobileOpen(false)}
           >
             {CTA_PRIMARY}
-          </Link>
+          </BookACallLink>
         </div>
       )}
     </nav>

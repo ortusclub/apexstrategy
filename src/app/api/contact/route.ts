@@ -8,10 +8,14 @@ import {
 import { CONTACT_EMAIL, ENQUIRY_RECIPIENTS } from "@/lib/site";
 
 /**
- * Homepage "Get a Quote" handler.
+ * Delegate-acquisition enquiry handler — the "Submit an Enquiry" route.
  *
  * Mirrors the event-register route: validate, drop honeypot hits, then email
  * the enquiry through Resend and log it server-side either way.
+ *
+ * Every field on the form is required except Event Details, which is where
+ * the audience, headcount and location arrive as free text — someone still
+ * scoping an event should never be blocked for not knowing them yet.
  */
 
 const EVENT_TYPES: Record<string, string> = {
@@ -34,6 +38,7 @@ type Payload = {
   firstName?: string;
   lastName?: string;
   email?: string;
+  phone?: string;
   company?: string;
   eventType?: string;
   timeframe?: string;
@@ -61,6 +66,7 @@ export async function POST(req: NextRequest) {
     firstName: clean(payload.firstName),
     lastName: clean(payload.lastName),
     email: clean(payload.email),
+    phone: clean(payload.phone),
     company: clean(payload.company),
     eventType: clean(payload.eventType),
     timeframe: clean(payload.timeframe),
@@ -71,6 +77,7 @@ export async function POST(req: NextRequest) {
     "firstName",
     "lastName",
     "email",
+    "phone",
     "company",
     "eventType",
     "timeframe",
@@ -94,19 +101,25 @@ export async function POST(req: NextRequest) {
   const eventType = EVENT_TYPES[fields.eventType] ?? fields.eventType;
   const timeframe = TIMEFRAMES[fields.timeframe] ?? fields.timeframe;
 
-  const subject = `[Website enquiry] ${name} — ${fields.company} — ${eventType}`;
+  const subject = `[Delegate acquisition enquiry] ${name} — ${fields.company} — ${eventType}`;
 
   const body = [
-    "New enquiry from the apexstrategy.io contact form",
+    "New delegate-acquisition enquiry from apexstrategy.io",
     "─".repeat(60),
     "",
+    "CONTACT",
     `Name:       ${name}`,
     `Email:      ${fields.email}`,
+    `Phone:      ${fields.phone}`,
     `Company:    ${fields.company}`,
-    `Event type: ${eventType}`,
-    `Timeframe:  ${timeframe}`,
     "",
-    fields.message ? `Message:\n${fields.message}\n` : null,
+    "EVENT",
+    `Event type: ${eventType}`,
+    `Timeline:   ${timeframe}`,
+    "",
+    fields.message
+      ? `Event details:\n${fields.message}\n`
+      : "Event details: none given\n",
     `— submitted ${new Date().toISOString()}`,
     `IP:         ${req.headers.get("x-forwarded-for") ?? "unknown"}`,
   ]
@@ -130,6 +143,6 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
-    message: `Thanks, ${fields.firstName}. We'll be in touch within 24 hours.`,
+    message: `Thanks, ${fields.firstName}. We'll get back to you within 24 hours.`,
   });
 }

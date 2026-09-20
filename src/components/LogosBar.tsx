@@ -1,15 +1,46 @@
 import Image from "next/image";
 
+/**
+ * Client marks, as vector wherever the brand publishes one.
+ *
+ * `h` is the rendered height in px at the `md` breakpoint. It is not uniform
+ * on purpose: a long wordmark like Dell Technologies and a stacked mark like
+ * AWS carry very different optical weight at the same height. Heights are
+ * derived from each mark's aspect ratio so the row reads as evenly weighted
+ * while every logo keeps its own proportions. `w`/`h` on the Image are the
+ * asset's intrinsic size — only the ratio matters for a vector.
+ */
 const logos = [
-  { name: "Dell", file: "Dell-logo-new-150x150.png" },
-  { name: "Slack", file: "Slack-logo-150x150.png" },
-  { name: "PayPal", file: "Paypal-logo-150x150.png" },
-  { name: "Google Cloud", file: "Google-cloud-logo-150x150.png" },
-  { name: "AWS", file: "Aws-logo-150x150.png" },
-  { name: "Adobe", file: "Adobe-logo-150x150.png" },
-  { name: "Dassault", file: "Dassault-logo-150x150.png" },
-  { name: "KMC", file: "Kmc-logo-150x150.png" },
+  { name: "Dell Technologies", file: "dell.svg", w: 72, h: 9.2, height: 28 },
+  { name: "Slack", file: "slack.svg", w: 498, h: 127, height: 38 },
+  { name: "PayPal", file: "paypal.svg", w: 124, h: 33, height: 38 },
+  { name: "Google Cloud", file: "google-cloud.svg", w: 181, h: 28, height: 30 },
+  { name: "Amazon Web Services", file: "aws.svg", w: 304, h: 182, height: 54 },
+  { name: "Adobe", file: "adobe.svg", w: 949, h: 239.3, height: 38 },
+  { name: "Dassault Systèmes", file: "dassault.svg", w: 452.7, h: 136.8, height: 48 },
+  { name: "Zendesk", file: "zendesk.svg", w: 370, h: 59, height: 28 },
+  { name: "KMC Solutions", file: "kmc.png", w: 929, h: 334, height: 44 },
 ];
+
+/** Shared row so the wall is identical wherever it appears. */
+function LogoRow({ scale = 1 }: { scale?: number }) {
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 md:gap-x-16">
+      {logos.map((logo) => (
+        <Image
+          key={logo.name}
+          src={`/images/logos/${logo.file}`}
+          alt={logo.name}
+          width={logo.w}
+          height={logo.h}
+          unoptimized={logo.file.endsWith(".svg")}
+          style={{ "--logo-h": `${logo.height * scale}px` } as React.CSSProperties}
+          className="h-[calc(var(--logo-h)*0.78)] md:h-[var(--logo-h)] w-auto transition-transform duration-300 hover:scale-105"
+        />
+      ))}
+    </div>
+  );
+}
 
 /**
  * Client logo wall.
@@ -25,22 +56,13 @@ export default function LogosBar({
 }) {
   if (!prominent) {
     return (
-      <section className="border-y border-border py-8">
+      <section className="border-y border-border py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8">
           <h2 className="text-text-muted text-xs font-semibold tracking-widest uppercase whitespace-nowrap">
             Trusted by
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 flex-1">
-            {logos.map((logo) => (
-              <Image
-                key={logo.name}
-                src={`/images/logos/${logo.file}`}
-                alt={logo.name}
-                width={80}
-                height={80}
-                className="h-8 w-auto grayscale opacity-40 hover:opacity-80 hover:grayscale-0 transition-all duration-300"
-              />
-            ))}
+          <div className="flex-1">
+            <LogoRow scale={0.7} />
           </div>
         </div>
       </section>
@@ -48,9 +70,9 @@ export default function LogosBar({
   }
 
   return (
-    <section className="border-y border-border py-14" aria-labelledby="trusted-by">
+    <section className="border-y border-border py-16" aria-labelledby="trusted-by">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <h2
             id="trusted-by"
             className="text-accent text-xs font-semibold tracking-widest uppercase mb-3"
@@ -62,18 +84,7 @@ export default function LogosBar({
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-16">
-          {logos.map((logo) => (
-            <Image
-              key={logo.name}
-              src={`/images/logos/${logo.file}`}
-              alt={logo.name}
-              width={150}
-              height={150}
-              className="h-12 md:h-14 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
-            />
-          ))}
-        </div>
+        <LogoRow />
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ import { CONTACT_EMAIL, LEGAL_NAME, LINKEDIN_URL } from "@/lib/site";
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/delegate-acquisition", label: "Delegate Acquisition" },
-  { href: "/events", label: "Our Events" },
+  { href: "/events", label: "Events" },
   { href: "/faq", label: "FAQs" },
   { href: "/contact", label: "Contact Us" },
 ];

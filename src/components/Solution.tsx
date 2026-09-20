@@ -2,13 +2,12 @@ import Link from "next/link";
 import {
   ArrowRightIcon,
   BriefingIcon,
-  CalendarIcon,
-  DatabaseIcon,
   DiningIcon,
   SportingIcon,
   SummitIcon,
 } from "@/components/icons";
-import { CTA_PRIMARY, getService } from "@/lib/site";
+import { CTA_PRIMARY } from "@/lib/site";
+import BookACallLink from "@/components/BookACallLink";
 
 const EVENT_TYPES = [
   {
@@ -31,12 +30,6 @@ const EVENT_TYPES = [
     title: "Sporting Occasions",
     desc: "Hospitality events that build relationships in relaxed settings.",
   },
-];
-
-/** The two enquiry-led services, shown alongside the core offering. */
-const SUPPORTING_SERVICES = [
-  { Icon: DatabaseIcon, ...getService("data-services") },
-  { Icon: CalendarIcon, ...getService("appointment-setting") },
 ];
 
 export default function Solution() {
@@ -70,12 +63,11 @@ export default function Solution() {
                 More on delegate acquisition{" "}
                 <ArrowRightIcon className="w-4 h-4" />
               </Link>
-              <Link
-                href="/contact"
+              <BookACallLink
                 className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
                 {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-              </Link>
+              </BookACallLink>
             </div>
           </div>
 
@@ -98,39 +90,6 @@ export default function Solution() {
           </div>
         </div>
 
-        {/* Supporting services, folded in rather than given their own section */}
-        <div className="mt-20 reveal">
-          <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-6">
-            Alongside delegate acquisition
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {SUPPORTING_SERVICES.map((s) => (
-              <div
-                key={s.slug}
-                className="bg-bg-card border border-border rounded-2xl p-7 hover:border-[rgba(146,212,205,0.2)] transition-colors flex flex-col"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="w-12 h-12 rounded-xl bg-[rgba(0,208,132,0.1)] flex items-center justify-center flex-shrink-0">
-                    <s.Icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-white">{s.name}</h3>
-                </div>
-                <p className="text-text-light text-sm leading-relaxed mb-5">
-                  {s.description}
-                </p>
-                <Link
-                  href="/contact"
-                  className="text-accent hover:text-accent-hover font-medium text-sm inline-flex items-center gap-1.5 transition-colors rounded-sm mt-auto"
-                >
-                  {CTA_PRIMARY}
-                  <span className="sr-only"> about {s.name}</span>
-                  <ArrowRightIcon className="w-4 h-4" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

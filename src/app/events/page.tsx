@@ -14,9 +14,9 @@ import { DINNERS, INVITATION_TERMS } from "@/content/dinners";
 import ExpandableGrid from "@/components/ExpandableGrid";
 import CollapsibleSection from "@/components/CollapsibleSection";
 
-const TITLE = "Our Events";
+const TITLE = "Events We're Supporting";
 const DESCRIPTION =
-  "Executive dinners, roundtables and briefings we host and fill — what's coming up, and a selection of the campaigns we have already delivered delegates for.";
+  "Client events Apex Strategy is supporting through targeted delegate acquisition — what's open for registration now, and a selection of events we have already helped fill.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -42,7 +42,7 @@ const CARD_GRID = "grid gap-6 sm:grid-cols-2 lg:grid-cols-3";
 
 const crumbs = [
   { name: "Home", path: "/" },
-  { name: "Our Events", path: "/events" },
+  { name: "Events", path: "/events" },
 ];
 
 type UpcomingCard = {
@@ -54,7 +54,8 @@ type UpcomingCard = {
   type: string;
   description: string;
   href?: string;
-  partner?: string;
+  /** Whoever convenes the event. Never Apex — we are not the organiser. */
+  host?: string;
   /** Only the dinners carry the invitation terms line. */
   terms?: string;
 };
@@ -73,7 +74,7 @@ const upcoming: UpcomingCard[] = [
     type: "Executive dinner",
     description: dinner.summary,
     href: `/events/${dinner.slug}`,
-    partner: "Aphinia",
+    host: "Aphinia",
     terms: INVITATION_TERMS,
   })),
   ...UPCOMING_EVENTS.map((event) => ({
@@ -84,7 +85,7 @@ const upcoming: UpcomingCard[] = [
     type: event.type,
     description: event.description,
     href: event.href,
-    partner: event.partner,
+    host: event.host,
   })),
 ].sort((a, b) => a.dateISO.localeCompare(b.dateISO));
 
@@ -107,12 +108,13 @@ export default function EventsPage() {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Our events
+              Events we&apos;re supporting
             </h1>
 
             <p className="text-text-light text-lg leading-relaxed max-w-2xl">
-              Executive dinners, roundtables, and briefings — browse what&apos;s
-              open to attend now.
+              Explore a selection of events Apex Strategy is currently
+              supporting through targeted delegate acquisition. Each one is
+              hosted by our client or partner — our role is filling the room.
             </p>
           </div>
         </section>
@@ -124,8 +126,8 @@ export default function EventsPage() {
             <div className="max-w-5xl mx-auto px-6">
               <SectionHeading
                 eyebrow="Coming up"
-                title="Upcoming events."
-                intro="Invitation-only gatherings for senior decision-makers, powered by Apex."
+                title="Open for registration."
+                intro="Invitation-only gatherings for senior decision-makers. The host runs the evening; we source and confirm the guest list."
               />
 
               <ExpandableGrid
@@ -142,9 +144,9 @@ export default function EventsPage() {
                       <span className="text-accent text-xs font-semibold tracking-widest uppercase">
                         {event.type}
                       </span>
-                      {event.partner && (
+                      {event.host && (
                         <span className="text-text-muted text-xs tracking-wide">
-                          with {event.partner}
+                          Hosted by {event.host}
                         </span>
                       )}
                     </div>
@@ -171,6 +173,10 @@ export default function EventsPage() {
                       {event.description}
                     </p>
 
+                    <p className="text-text-muted text-xs mt-4">
+                      Delegate acquisition by Apex Strategy
+                    </p>
+
                     {event.href && (
                       <Link
                         href={event.href}
@@ -192,9 +198,9 @@ export default function EventsPage() {
           <section className="py-24 bg-bg-secondary border-t border-border">
             <div className="max-w-5xl mx-auto px-6">
               <SectionHeading
-                eyebrow="Past Events"
-                title="Events we've filled."
-                intro="A selection of executive gatherings we have delivered delegates for."
+                eyebrow="Past campaigns"
+                title="Events we've helped fill."
+                intro="A selection of client events we have delivered qualified delegates for."
               />
 
               <CollapsibleSection

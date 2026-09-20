@@ -1,5 +1,8 @@
 /**
- * Delivered event showcase.
+ * Delivered campaign showcase — client events Apex supplied delegates for.
+ *
+ * Apex did not host, produce or organise any event listed here. Descriptions
+ * must stay framed around the delegate acquisition we delivered.
  *
  * ⚠️ CONFIRM BEFORE PUBLISHING ⚠️
  *
@@ -81,8 +84,11 @@ export type UpcomingEvent = {
   description: string;
   /** Registration page. Omit to list the event without a link. */
   href?: string;
-  /** Co-host or partner, if the event is run with one. */
-  partner?: string;
+  /**
+   * Whoever convenes the event — the client or partner hosting it. Never
+   * Apex: we supply the delegates, we do not organise the event.
+   */
+  host?: string;
 };
 
 export const UPCOMING_EVENTS: UpcomingEvent[] = [];

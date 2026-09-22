@@ -22,7 +22,14 @@ const logos = [
   { name: "KMC Solutions", file: "kmc.png", w: 929, h: 334, height: 44 },
 ];
 
-/** Shared row so the wall is identical wherever it appears. */
+/**
+ * Shared row so the wall is identical wherever it appears.
+ *
+ * Marks are flattened to a single white (`brightness-0 invert`) so the
+ * brand-colour originals, several of which are near-black, stay legible on
+ * the dark background and read at one even brightness. Hover restores the
+ * original brand colours.
+ */
 function LogoRow({ scale = 1 }: { scale?: number }) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 md:gap-x-16">
@@ -35,7 +42,7 @@ function LogoRow({ scale = 1 }: { scale?: number }) {
           height={logo.h}
           unoptimized={logo.file.endsWith(".svg")}
           style={{ "--logo-h": `${logo.height * scale}px` } as React.CSSProperties}
-          className="h-[calc(var(--logo-h)*0.78)] md:h-[var(--logo-h)] w-auto transition-transform duration-300 hover:scale-105"
+          className="h-[calc(var(--logo-h)*0.78)] md:h-[var(--logo-h)] w-auto brightness-0 invert opacity-90 transition duration-300 hover:brightness-100 hover:invert-0 hover:opacity-100 hover:scale-105"
         />
       ))}
     </div>

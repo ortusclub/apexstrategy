@@ -9,14 +9,19 @@
  * never "an Apex event", never a named client — so nothing here implies we
  * convened the room.
  *
- * Licensing — every image below is from Pexels under the Pexels License:
- * free for commercial use, no attribution required, no visible credit added
- * to the site. Source pages and photographers are recorded per slide so the
- * provenance is auditable from the repository alone.
+ * Licensing — every image below is from Pexels (Pexels License) or Unsplash
+ * (Unsplash License). Both are free for commercial use with no attribution
+ * required, so no visible credit is added to the site. Only free Unsplash
+ * photos are used, never Unsplash+. Frames with a readable third-party logo
+ * or event name are avoided, so no slide implies a tie to a real event.
+ * Source pages and photographers are recorded per slide so the provenance is
+ * auditable from the repository alone.
  *
  * Adding a slide: drop a ~1600px-wide file in `public/images/events/`, append
  * an entry with its real pixel dimensions, and record the source and licence
  * in the same shape. The carousel renders whatever this array contains.
+ * Replacing a photo: give the new file a new name. Optimised images are
+ * cached by URL, so reusing a filename can keep serving the old picture.
  */
 
 export type HeroSlide = {
@@ -40,70 +45,84 @@ export type HeroSlide = {
 };
 
 const PEXELS = "Pexels License — free for commercial use, no attribution required";
+const UNSPLASH = "Unsplash License — free for commercial use, no attribution required";
 
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: "/images/events/executive-dinner.jpg",
-    alt: "Around twenty guests in conversation along a long candlelit banquet table at a private dinner",
+    src: "/images/events/summit-ballroom-plenary.jpg",
+    alt: "A speaker at a lectern addressing a full hotel ballroom of delegates in business dress seated at round tables",
     width: 1600,
     height: 1200,
-    caption: "Executive dinners",
-    credit: {
-      photographer: "furkanfdemir",
-      source: "https://www.pexels.com/photo/people-having-a-formal-dinner-10821303/",
-      license: PEXELS,
-      // Portrait original (4000x6000), pre-cropped to a 4:3 band on the
-      // seated guests — object-cover alone would have centred on the ceiling.
-      note: "Cropped from the portrait original to 1600x1200",
-    },
-  },
-  {
-    src: "/images/events/executive-summit.jpg",
-    alt: "A large audience filling an auditorium for a keynote session at a business summit",
-    width: 1600,
-    height: 1068,
     caption: "Executive summits",
     credit: {
-      photographer: "BBSO",
-      source: "https://www.pexels.com/photo/gathering-during-event-20733081/",
-      license: PEXELS,
+      photographer: "Andy Wang",
+      source: "https://unsplash.com/photos/a-group-of-people-sitting-at-tables-5mwo_CgCXaA",
+      license: UNSPLASH,
     },
   },
   {
-    src: "/images/events/b2b-conference.jpg",
-    alt: "Delegates in business dress seated in rows through a session at a B2B conference",
+    src: "/images/events/conference-auditorium.jpg",
+    alt: "A speaker presenting from the stage to a full tiered auditorium at a conference",
     width: 1600,
-    height: 1066,
+    height: 1067,
     caption: "B2B conferences",
     credit: {
-      photographer: "Loveleen Cherub",
-      source: "https://www.pexels.com/photo/view-of-people-sitting-at-the-conference-26202153/",
+      photographer: "Marwen Larafa",
+      source: "https://unsplash.com/photos/speaker-presenting-to-large-audience-in-auditorium-_96edJ8IVC4",
+      license: UNSPLASH,
+    },
+  },
+  {
+    src: "/images/events/panel-discussion-stage.jpg",
+    alt: "A speaker in a suit addressing the audience with a microphone beside three panellists seated on stage",
+    width: 1600,
+    height: 1067,
+    caption: "Panel discussions",
+    // The far-right panellist sits on the edge; a centre crop clips his face.
+    position: "70% center",
+    credit: {
+      photographer: "Henri Mathieu-Saint-Laurent",
+      source: "https://www.pexels.com/photo/man-wearing-suit-speaking-on-a-microphone-8349230/",
       license: PEXELS,
     },
   },
   {
-    src: "/images/events/executive-roundtable.jpg",
-    alt: "Senior executives in focused discussion over documents around a boardroom table",
+    src: "/images/events/roundtable-dinner.jpg",
+    alt: "Guests seated around a dinner table listening as one of the speakers talks into a microphone",
     width: 1600,
-    height: 1066,
+    height: 1067,
     caption: "Executive roundtables",
     credit: {
-      photographer: "Vlada Karpovich",
-      source:
-        "https://www.pexels.com/photo/elderly-man-and-woman-discussing-business-in-a-meeting-7433853/",
-      license: PEXELS,
+      photographer: "Riccardi Media",
+      source: "https://unsplash.com/photos/panel-discussion-with-speakers-and-audience-at-a-table-3BwoM8zNYwo",
+      license: UNSPLASH,
     },
   },
   {
-    src: "/images/events/executive-networking.jpg",
-    alt: "Delegates standing in several conversation groups across a conference room during a networking break",
+    src: "/images/events/executive-briefing.jpg",
+    alt: "Professionals in small groups talking over drinks and a tablet at a standing reception",
     width: 1600,
-    height: 1068,
+    height: 900,
+    caption: "Executive briefings",
+    credit: {
+      photographer: "jimylloyd laumain",
+      source: "https://unsplash.com/photos/a-group-of-people-standing-around-each-other-Tc1mBpMS-zs",
+      license: UNSPLASH,
+    },
+  },
+  {
+    src: "/images/events/networking-reception.jpg",
+    alt: "Executives in suits talking and smiling in small groups at a networking reception",
+    width: 1600,
+    height: 1200,
     caption: "Executive networking",
     credit: {
-      photographer: "Pavel Danilyuk",
-      source: "https://www.pexels.com/photo/groups-of-people-talking-in-the-office-8761555/",
-      license: PEXELS,
+      photographer: "Jenean Newcomb",
+      source: "https://unsplash.com/photos/man-in-black-suit-jacket-smiling-RzuxpXvwFbE",
+      license: UNSPLASH,
+      // Portrait original (1600x2400 at the downloaded size), pre-cropped to a
+      // 4:3 band on the faces; object-cover alone would centre on the jackets.
+      note: "Cropped from the portrait original to 1600x1200",
     },
   },
 ];

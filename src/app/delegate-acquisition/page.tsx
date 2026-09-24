@@ -11,7 +11,7 @@ import SectionHeading from "@/components/SectionHeading";
 import WhyCampaignsFail from "@/components/WhyCampaignsFail";
 import { ArrowRightIcon, CheckIcon } from "@/components/icons";
 import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
-import { CTA_PRIMARY, getService } from "@/lib/site";
+import { CTA_PRIMARY, CTA_SECONDARY_PATH, getService } from "@/lib/site";
 import {
   CAMPAIGN_STAGES,
   NO_WIN_NO_FEE,
@@ -99,7 +99,13 @@ export default function DelegateAcquisitionPage() {
               ))}
             </ul>
 
-            <PrimaryCta />
+            <Link
+              href={CTA_SECONDARY_PATH}
+              className="bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
+            >
+              Tell Us More About Your Event{" "}
+              <ArrowRightIcon className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 

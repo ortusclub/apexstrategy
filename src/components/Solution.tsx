@@ -6,8 +6,7 @@ import {
   SportingIcon,
   SummitIcon,
 } from "@/components/icons";
-import { CTA_PRIMARY } from "@/lib/site";
-import BookACallLink from "@/components/BookACallLink";
+import { CTA_SECONDARY_PATH } from "@/lib/site";
 
 const EVENT_TYPES = [
   {
@@ -63,11 +62,12 @@ export default function Solution() {
                 More on delegate acquisition{" "}
                 <ArrowRightIcon className="w-4 h-4" />
               </Link>
-              <BookACallLink
+              <Link
+                href={CTA_SECONDARY_PATH}
                 className="border border-[rgba(146,212,205,0.2)] hover:border-[rgba(146,212,205,0.4)] text-text-light hover:text-white px-8 py-3.5 rounded-lg text-base transition-colors inline-flex items-center justify-center gap-2"
               >
-                {CTA_PRIMARY} <ArrowRightIcon className="w-4 h-4" />
-              </BookACallLink>
+                Contact Us <ArrowRightIcon className="w-4 h-4" />
+              </Link>
             </div>
           </div>
 

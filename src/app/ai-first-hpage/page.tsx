@@ -42,7 +42,7 @@ export default function AiFirstHomePage() {
         <EventShowcase />
         <CtaSection />
       </main>
-      <Footer description="AI-first delegate acquisition for executive events. Powered by the Apex Precision Pipeline™." />
+      <Footer description="AI-first delegate acquisition for executive events. Powered by the Apex Precision Guesting™." />
     </>
   );
 }

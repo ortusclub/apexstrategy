@@ -119,7 +119,7 @@ export default function Solution() {
         <div className="mt-16 pt-12 border-t border-border">
           <div className="max-w-3xl mb-8 reveal">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Powered by the Apex Precision Pipeline™
+              Powered by the Apex Precision Guesting™
             </h3>
             <p className="text-text-light text-lg leading-relaxed">
               Intelligent targeting. Personal invitations. Qualified guests.

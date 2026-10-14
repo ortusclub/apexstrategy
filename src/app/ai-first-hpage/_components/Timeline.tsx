@@ -46,7 +46,7 @@ export default function Timeline() {
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-0.5 bg-accent"></span>
               <span className="text-accent text-xs font-semibold tracking-widest uppercase">
-                The Apex Precision Pipeline™
+                The Apex Precision Guesting™
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

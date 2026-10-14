@@ -26,7 +26,7 @@ export default function Hero() {
 
             <p className="text-text-light text-lg leading-relaxed mb-8 max-w-xl">
               You&apos;ve planned the event. We find the people who belong there.
-              Our proprietary Apex Precision Pipeline™ combines audience intelligence,
+              Our proprietary Apex Precision Guesting™ combines audience intelligence,
               personalised invitations and expert campaign management to
               connect your event with the right senior decision-makers.
             </p>

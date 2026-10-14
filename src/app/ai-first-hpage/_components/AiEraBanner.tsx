@@ -12,7 +12,7 @@ export default function AiEraBanner() {
         <p className="inline-flex items-center gap-3 text-xs md:text-sm font-semibold tracking-widest uppercase mb-7 text-accent-secondary"><span aria-hidden="true" className="w-8 h-0.5 bg-accent" />Apex Strategy · AI-first by design</p>
         <h1 id="ai-era-heading" className="max-w-5xl text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-balance">The <span className={styles.titleAccent}>AI era</span> has reached<br className="hidden md:block" /> B2B delegate acquisition.</h1>
         <p className="max-w-3xl text-lg md:text-2xl font-semibold leading-relaxed mt-7">Apex Strategy is your AI-first delegate acquisition partner.</p>
-        <p className="max-w-2xl text-base md:text-lg leading-relaxed mt-3 text-text-light">Powered by the Apex Precision Pipeline™. Built to find, engage and bring the right executives to your event.</p>
+        <p className="max-w-2xl text-base md:text-lg leading-relaxed mt-3 text-text-light">Powered by the Apex Precision Guesting™. Built to find, engage and bring the right executives to your event.</p>
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <BookACallLink className="inline-flex items-center justify-center gap-2 bg-accent text-bg-primary hover:bg-accent-hover font-semibold px-7 py-3.5 rounded-lg transition-colors">Build your audience <ArrowRightIcon className="w-4 h-4" /></BookACallLink>
           <Link href="#apex-acquisition" className="inline-flex items-center justify-center gap-2 border border-accent-secondary/40 text-white hover:bg-white/5 font-semibold px-7 py-3.5 rounded-lg transition-colors">Discover the Apex approach <span aria-hidden="true">↓</span></Link>

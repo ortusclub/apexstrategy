@@ -24,7 +24,7 @@ export default function CtaSection() {
         </p>
 
         <p className="text-text-light text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          Put the Apex Precision Pipeline™ to work for your next conference,
+          Put the Apex Precision Guesting™ to work for your next conference,
           summit, executive dinner or roundtable. Tell us who you want in
           the room. We&apos;ll build the campaign around them.
         </p>

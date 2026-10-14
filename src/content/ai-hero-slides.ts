@@ -33,4 +33,18 @@ export const AI_HERO_SLIDES: HeroSlide[] = [
     },
   },
   HERO_SLIDES[5],
+  HERO_SLIDES[0],
+  {
+    src: "/images/events/workshop-collaboration-v1.jpg",
+    alt: "Workshop participants discussing ideas with a facilitator beside a flipchart with sticky notes",
+    width: 1600,
+    height: 1067,
+    caption: "Workshops",
+    position: "55% center",
+    credit: {
+      photographer: "Alena Darmel",
+      source: "https://www.pexels.com/photo/people-in-a-meeting-7710054/",
+      license: pexelsLicense,
+    },
+  },
 ];

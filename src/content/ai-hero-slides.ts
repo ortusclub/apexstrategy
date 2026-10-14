@@ -1,7 +1,7 @@
 import { HERO_SLIDES, type HeroSlide } from "./hero-slides";
 
 // Licensed illustrative event-format photography; these are not Apex client events.
-// Original files downloaded at 1600px wide, without content edits.
+// Stock source and AI-edit provenance are recorded for each asset.
 const pexelsLicense = "Pexels License — free for commercial use, no attribution required";
 export const AI_HERO_SLIDES: HeroSlide[] = [
   {
@@ -19,15 +19,16 @@ export const AI_HERO_SLIDES: HeroSlide[] = [
   },
   HERO_SLIDES[3],
   {
-    src: "/images/events/executive-conversation-v2.jpg",
-    alt: "Three professionals in suits having a focused conversation in a warmly lit meeting space",
-    width: 1600,
-    height: 1068,
+    src: "/images/events/executive-conversation-v3.png",
+    alt: "Illustrative executive discussion: three professionals in suits talking around a table in a warmly lit meeting space",
+    width: 1448,
+    height: 1086,
     caption: "Focused executive discussions",
     credit: {
-      photographer: "August de Richelieu",
+      photographer: "August de Richelieu (source photograph; AI-edited illustration)",
       source: "https://www.pexels.com/photo/formal-business-meeting-4427923/",
       license: pexelsLicense,
+      note: "Edited with built-in imagegen: wider composition, reduced foreground obstruction, warmer lighting and more welcoming engagement. Illustrative imagery, not an actual Apex client event. Prompt: src/content/executive-conversation-v3-prompt.txt",
     },
   },
   HERO_SLIDES[5],

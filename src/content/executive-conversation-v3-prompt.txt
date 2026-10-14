@@ -1,0 +1,5 @@
+Tool: built-in image_gen.imagegen
+Edit target: public/images/events/executive-conversation-v2.jpg
+Output: public/images/events/executive-conversation-v3.png
+
+Edit target: the supplied business discussion photograph. Create an improved photorealistic editorial version for a premium B2B executive-event carousel. Keep the same three adult men, their identities, formal business clothing and warm wood-panelled setting. Improve the composition by widening the camera view to show all three engaged in a welcoming professional conversation around a table rather than oversized blurred backs filling the foreground. Preserve natural facial detail, subtle friendly engaged expressions, realistic hands and body proportions. Balanced warm natural lighting, richer but restrained colour, crisp main subjects with gentle background depth. Landscape 4:3 composition, faces comfortably inside the middle 80% of the frame; leave upper-left breathing room for the website's caption. Output the photograph only, no interface, text, logos, badges, borders or arrows. This is illustrative marketing imagery, not documentary evidence of a client event.

@@ -10,7 +10,7 @@ const NAV = [
   { href: "/contact", label: "Contact Us" },
 ];
 
-export default function Footer() {
+export default function Footer({ description = "B2B delegate acquisition for executive events. No win, no fee." }: { description?: string }) {
   return (
     <footer className="border-t border-border py-12">
       <div className="max-w-7xl mx-auto px-6">
@@ -30,7 +30,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-text-muted text-sm mt-4 max-w-xs leading-relaxed">
-              B2B delegate acquisition for executive events. No win, no fee.
+              {description}
             </p>
           </div>
 

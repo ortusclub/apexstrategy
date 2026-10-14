@@ -31,6 +31,45 @@ const EVENT_TYPES = [
   },
 ];
 
+const CAPABILITIES = [
+  {
+    title: "Multi-signal data intelligence",
+    summary: "Find the executives with a reason to be in the room.",
+    points: [
+      "Map relevant signals such as leadership changes, funding, hiring and regulatory shifts to your event’s themes.",
+      "Combine company and contact data with current public intelligence to enrich and verify executive profiles.",
+      "Bring targeting context and engagement history together for a coordinated campaign.",
+    ],
+  },
+  {
+    title: "Coordinated multi-channel outreach",
+    summary: "Reach decision-makers through a connected invitation journey.",
+    points: [
+      "Sequence email, LinkedIn and direct messaging so each touchpoint builds on the last.",
+      "Adapt channel mix and follow-up timing to engagement, reducing repetitive outreach.",
+      "Apply agreed exclusions, suppression lists and opt-out preferences across campaign channels.",
+    ],
+  },
+  {
+    title: "Personalised, concierge-level engagement",
+    summary: "Make every invitation relevant and every next step easy.",
+    points: [
+      "Tailor invitations to each executive’s role, company priorities, public initiatives and industry.",
+      "Use AI-assisted conversations to answer event questions and support follow-up in an executive-level tone.",
+      "Streamline scheduling and registration confirmation to turn interest into confirmed guests.",
+    ],
+  },
+  {
+    title: "Intelligent attendance management",
+    summary: "Keep acquisition aligned with your audience goals and capacity.",
+    points: [
+      "Identify relevant look-alike accounts and roles when the original brief is narrow, with your approval before expanding.",
+      "Monitor registration pace against targets and adapt campaign activity within agreed limits.",
+      "Route additional interest into waitlists or agreed one-to-one sales follow-up, with your attendee cap kept in view.",
+    ],
+  },
+];
+
 export default function Solution() {
   return (
     <section id="services" className="py-24 bg-bg-secondary">
@@ -41,7 +80,7 @@ export default function Solution() {
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-0.5 bg-accent" aria-hidden="true"></span>
               <span className="text-accent text-xs font-semibold tracking-widest uppercase">
-                Precision. Brand protection. Scale.
+                What we do
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
@@ -92,6 +131,39 @@ export default function Solution() {
           </div>
         </div>
 
+        <div className="mt-16 pt-12 border-t border-border">
+          <div className="max-w-3xl mb-8 reveal">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Powered by the Apex Precision Pipeline™
+            </h3>
+            <p className="text-text-light text-lg leading-relaxed">
+              Our AI-first orchestration brings together executive intent,
+              enriched data and coordinated outreach to deliver personalised,
+              concierge-level engagement at scale.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {CAPABILITIES.map((capability, index) => (
+              <article
+                key={capability.title}
+                className="bg-bg-card border border-border rounded-2xl p-6 md:p-8 reveal"
+              >
+                <span className="text-accent text-sm font-semibold tracking-widest" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h4 className="text-xl font-semibold text-white mt-3 mb-3">
+                  {capability.title}
+                </h4>
+                <p className="text-text-light leading-relaxed mb-5">
+                  {capability.summary}
+                </p>
+                <ul className="list-disc pl-5 space-y-3 text-sm text-text-muted leading-relaxed marker:text-accent">
+                  {capability.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

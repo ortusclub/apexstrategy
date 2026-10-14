@@ -1,0 +1,17 @@
+.banner {
+  background: radial-gradient(ellipse at 88% 15%, rgba(26, 137, 136, .36), transparent 54%), radial-gradient(ellipse at 14% 100%, rgba(0, 208, 132, .12), transparent 55%), linear-gradient(120deg, #061f24, #073c3c 70%, #0b3347);
+  border-bottom: 1px solid rgba(146, 212, 205, .2);
+}
+.titleAccent {
+  color: #a1f4d8;
+  background: linear-gradient(110deg, #9af0c8 10%, #5ee4dc 35%, #c0f7ff 50%, #5ee4dc 65%, #9af0c8 90%);
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 9s ease-in-out infinite;
+}
+.orbit { border: 1px solid rgba(125, 236, 218, .16); box-shadow: 0 0 70px rgba(94, 228, 220, .04); }
+@keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@media (prefers-reduced-motion: reduce) { .titleAccent { animation: none; } }
+@media (forced-colors: active) { .titleAccent { background: none; -webkit-text-fill-color: currentColor; color: CanvasText; } }

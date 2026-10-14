@@ -1,7 +1,7 @@
 import Link from "next/link";
 import HeroCarousel from "@/components/HeroCarousel";
 import { ArrowRightIcon, BoltIcon, CheckIcon } from "@/components/icons";
-import { HERO_SLIDES } from "@/content/hero-slides";
+import { AI_HERO_SLIDES } from "@/content/ai-hero-slides";
 import { CTA_PRIMARY } from "@/lib/site";
 import BookACallLink from "@/components/BookACallLink";
 
@@ -68,14 +68,13 @@ export default function Hero() {
           {/* Right column — the event formats we fill, not events we run */}
           <div className="animate-slide-up-delay-2 relative">
             <HeroCarousel
-              slides={HERO_SLIDES}
+              slides={AI_HERO_SLIDES}
               label="The kinds of executive event we fill with qualified delegates"
             >
-              {/* Bottom gradient overlay — must not swallow drag gestures */}
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg-primary/90 to-transparent pointer-events-none"></div>
+            </HeroCarousel>
 
-              {/* Floating stat boxes */}
-              <div className="absolute bottom-4 left-4 right-4 flex gap-3 pointer-events-none">
+              {/* Experience figures sit below the photography. */}
+              <div className="mt-6 flex gap-3">
                 <div className="flex-1 bg-bg-card/90 backdrop-blur-sm border border-border rounded-lg p-3 text-center">
                   <div className="text-accent text-xl font-bold">12+</div>
                   <div className="text-text-muted text-xs">Years</div>
@@ -89,7 +88,6 @@ export default function Hero() {
                   <div className="text-text-muted text-xs">Events</div>
                 </div>
               </div>
-            </HeroCarousel>
           </div>
         </div>
       </div>

@@ -34,16 +34,17 @@ export const AI_HERO_SLIDES: HeroSlide[] = [
   },
   HERO_SLIDES[5],
   {
-    src: "/images/events/executive-summit-user-v1.png",
-    alt: "Executive summit panel discussion on a blue-lit stage in front of an audience",
-    width: 1050,
-    height: 552,
+    src: "/images/events/executive-summit-enhanced-v2.png",
+    alt: "Rows of seated attendees watching six panelists on a blue-lit executive summit stage",
+    width: 1448,
+    height: 1086,
     caption: "Executive summits",
     position: "center center",
     credit: {
       photographer: "Not specified (user-supplied photograph)",
       source: "User attachment: Screenshot 2026-10-14 at 14.46.59.png",
       license: "Supplied by the user for use on this website",
+      note: "AI-enhanced with the built-in imagegen tool at the user's request; foreground audience extended. Illustrative edited scene, not a documentary record of attendance.",
     },
   },
 ];

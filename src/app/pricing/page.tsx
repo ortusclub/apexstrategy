@@ -76,7 +76,7 @@ export default function PricingPage() {
           ["Your target and audience", "The attendee target, qualification criteria and audience scope are recorded in your proposal."],
           ["Your campaign fees", "Your tier’s base fee and per-attendee rate are confirmed before launch."],
           ["Your attendance record", "We agree how attendance is verified and how the base-fee waiver is applied if the threshold is reached."],
-          ["Your event capacity", "We discuss capacity and the commercial terms for any attendance above target as part of your proposal."],
+          ["Above-target attendance", "Extra qualified attendees are billed at the agreed per-guest rate, up to an attendance cap you approve in advance. There is no separate overdelivery bonus. Any increase to the cap requires your approval before additional fees apply."],
         ].map(([title, text]) => <div key={title}><h3 className="text-lg font-semibold mb-3">{title}</h3><p className="text-text-light text-sm leading-relaxed">{text}</p></div>)}</div></div></section>
 
         <section className="py-20 bg-bg-secondary cta-gradient-bg border-t border-border"><div className="max-w-3xl mx-auto px-6 text-center"><h2 className="text-3xl md:text-4xl font-bold mb-5">Let’s put a plan behind your target.</h2><p className="text-text-light text-lg leading-relaxed mb-8">Tell us about your event and ideal audience. We’ll scope the campaign, agree the target and give you a clear quote.</p><BookACallLink className="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-8 py-3.5 rounded-lg transition-colors">Discuss pricing <ArrowRightIcon className="w-4 h-4" /></BookACallLink></div></section>

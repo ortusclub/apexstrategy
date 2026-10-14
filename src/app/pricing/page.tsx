@@ -54,6 +54,10 @@ export default function PricingPage() {
                 <BookACallLink className="inline-flex items-center justify-center gap-2 w-full bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-3.5 rounded-lg transition-colors">Discuss this tier <ArrowRightIcon className="w-4 h-4" /></BookACallLink>
               </article>)}
             </div>
+            <div className="max-w-4xl mx-auto mt-8 rounded-xl border border-border bg-bg-primary/40 p-6">
+              <h3 className="text-base font-semibold mb-2">Audience difficulty adjustment</h3>
+              <p className="text-text-light text-sm leading-relaxed">The prices above are our standard tier rates. Apex Strategy reserves the right to quote a difficulty multiplier for particularly demanding briefs, such as highly specialised roles, restricted account lists, hard-to-reach markets or short lead times. Any multiplier, the fees it applies to and the revised total will be clearly stated in your proposal and agreed with you before the campaign begins.</p>
+            </div>
             <p className="text-text-light text-sm leading-relaxed max-w-4xl mx-auto mt-8 text-center">Totals include the base fee plus the per-guest fee at each end of the target range. Minimum yield benchmarks are planning milestones, not the base-fee waiver threshold. The waiver is based on 50% of the exact attendee target agreed for your campaign.</p>
           </div>
         </section>

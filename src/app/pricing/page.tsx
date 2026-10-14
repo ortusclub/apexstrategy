@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 };
 
 const plans = [
-  { tier: "Tier 1", name: "Intimate executive dinner / roundtable", minGuests: 15, maxGuests: 20, baseFee: 2250, guestFee: 550, yieldFloor: 10, items: ["A tightly defined executive audience", "Personalised invitations and follow-up", "Guest qualification and attendance tracking"] },
-  { tier: "Tier 2", name: "Mid-sized workshop / briefing", minGuests: 40, maxGuests: 50, baseFee: 4250, guestFee: 450, yieldFloor: 25, items: ["A focused audience across priority accounts", "Coordinated multi-channel outreach", "Guest qualification and attendance tracking"] },
-  { tier: "Tier 3", name: "Flagship executive forum", minGuests: 80, maxGuests: 100, baseFee: 7500, guestFee: 350, yieldFloor: 50, items: ["Executive acquisition at greater scale", "Campaign coordination across audience segments", "Guest qualification and attendance tracking"] },
+  { tier: "Tier 1", name: "Intimate executive dinner / roundtable", minGuests: 5, maxGuests: 20, baseFee: 2250, guestFee: 550, items: ["A tightly defined executive audience", "Personalised invitations and follow-up", "Guest qualification and attendance tracking"] },
+  { tier: "Tier 2", name: "Mid-sized workshop / briefing", minGuests: 40, maxGuests: 50, baseFee: 4250, guestFee: 450, items: ["A focused audience across priority accounts", "Coordinated multi-channel outreach", "Guest qualification and attendance tracking"] },
+  { tier: "Tier 3", name: "Flagship executive forum", minGuests: 80, maxGuests: 100, baseFee: 7500, guestFee: 350, items: ["Executive acquisition at greater scale", "Campaign coordination across audience segments", "Guest qualification and attendance tracking"] },
 ];
 const money = (amount: number) => `$${amount.toLocaleString("en-US")}`;
 
@@ -38,18 +38,17 @@ export default function PricingPage() {
         <section className="py-16 bg-bg-secondary" aria-labelledby="event-size-heading">
           <div className="max-w-7xl mx-auto px-6">
             <h2 id="event-size-heading" className="text-3xl font-bold text-center mb-4">Three tiers. One aligned approach.</h2>
-            <p className="text-text-light text-center max-w-2xl mx-auto mb-10">Choose the scale that fits your event. Each tier combines a base technology and operations fee with a fee for every qualified guest who attends. All prices are in USD.</p>
+            <p className="text-text-light text-center max-w-2xl mx-auto mb-10">Guest ranges are approximate guides; we’ll agree your exact target together. Each tier combines a base technology and operations fee with a fee for every qualified guest who attends. All prices are in USD.</p>
             <div className="grid lg:grid-cols-3 gap-6">
               {plans.map(plan => <article key={plan.tier} className={`relative flex flex-col rounded-2xl p-7 md:p-8 border ${plan.tier === "Tier 2" ? "bg-bg-card border-accent" : "bg-bg-card border-border"}`}>
                 <p className="text-accent text-xs font-semibold tracking-widest uppercase mb-4">{plan.tier}</p>
                 <h3 className="text-2xl font-semibold mb-4 lg:min-h-24">{plan.name}</h3>
-                <p className="text-accent-secondary mb-7">Target: {plan.minGuests}–{plan.maxGuests} guests</p>
+                <p className="text-accent-secondary mb-7">Approx. target: {plan.minGuests}–{plan.maxGuests} guests</p>
                 <dl className="border-y border-border py-6 space-y-5">
                   <div><dt className="text-text-light text-sm mb-2">Base technology &amp; operations fee</dt><dd className="text-4xl font-semibold text-white">{money(plan.baseFee)}</dd></div>
                   <div><dt className="text-text-light text-sm mb-2">Per qualified attendee</dt><dd className="text-2xl font-semibold text-accent">+ {money(plan.guestFee)} <span className="text-sm text-text-light font-normal">/ guest</span></dd></div>
-                  <div><dt className="text-text-light text-sm">Minimum yield benchmark</dt><dd className="text-white font-medium mt-1">{plan.yieldFloor} guests</dd></div>
                 </dl>
-                <div className="rounded-lg bg-bg-primary/50 p-5 my-6"><p className="text-text-light text-xs uppercase tracking-wider mb-2">Total investment at target</p><p className="text-xl font-semibold text-accent-secondary">{money(plan.baseFee + plan.minGuests * plan.guestFee)}–{money(plan.baseFee + plan.maxGuests * plan.guestFee)}</p></div>
+                <div className="rounded-lg bg-bg-primary/50 p-5 my-6"><p className="text-text-light text-xs uppercase tracking-wider mb-2">Estimated total investment</p><p className="text-xl font-semibold text-accent-secondary">{money(plan.baseFee + plan.minGuests * plan.guestFee)}–{money(plan.baseFee + plan.maxGuests * plan.guestFee)}</p></div>
                 <ul className="space-y-4 mb-8 flex-1">{plan.items.map(item => <li className="flex items-start gap-3 text-text-light text-sm" key={item}><CheckIcon className="w-5 h-5 text-accent shrink-0" /><span>{item}</span></li>)}</ul>
                 <BookACallLink className="inline-flex items-center justify-center gap-2 w-full bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-3.5 rounded-lg transition-colors">Discuss this tier <ArrowRightIcon className="w-4 h-4" /></BookACallLink>
               </article>)}
@@ -65,7 +64,7 @@ export default function PricingPage() {
               <h3 className="text-base font-semibold mb-2">Audience difficulty adjustment</h3>
               <p className="text-text-light text-sm leading-relaxed">The prices above are our standard tier rates. Apex Strategy reserves the right to quote a difficulty multiplier for particularly demanding briefs, such as highly specialised roles, restricted account lists, hard-to-reach markets or short lead times. Any multiplier, the fees it applies to and the revised total will be clearly stated in your proposal and agreed with you before the campaign begins.</p>
             </div>
-            <p className="text-text-light text-sm leading-relaxed max-w-4xl mx-auto mt-8 text-center">Totals include the base fee plus the per-guest fee at each end of the target range. Minimum yield benchmarks are planning milestones, not the base-fee waiver threshold. The waiver is based on 50% of the exact attendee target agreed for your campaign.</p>
+            <p className="text-text-light text-sm leading-relaxed max-w-4xl mx-auto mt-8 text-center">Estimated totals include the standard base fee plus the per-guest fee at each end of the approximate range. Your exact target and quote are agreed before launch. The base-fee waiver is based on 50% of that agreed target, not the guide range.</p>
           </div>
         </section>
 

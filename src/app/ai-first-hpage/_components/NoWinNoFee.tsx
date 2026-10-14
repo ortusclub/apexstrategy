@@ -10,7 +10,7 @@ export default function NoWinNoFee() {
         </svg>
       ),
       title: "A base fee matched to your event",
-      desc: "Separate base fees for small and large events, scoped around your campaign. Exact fees are agreed in your proposal.",
+      desc: "Three event tiers: $2,250, $4,250 or $7,500 USD in base technology and operations fees, matched to your event size.",
     },
     {
       icon: (
@@ -19,7 +19,7 @@ export default function NoWinNoFee() {
         </svg>
       ),
       title: "A fee for each qualified attendee",
-      desc: "Your per-attendee rate reflects the audience you want to reach. Pay for qualified guests who attend, against the criteria agreed before launch.",
+      desc: "Per-guest fees of $550, $450 or $350 USD by tier. Pay for qualified guests who attend, against the criteria agreed before launch.",
     },
     {
       icon: (

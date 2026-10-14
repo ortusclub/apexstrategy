@@ -7,7 +7,7 @@ import BookACallLink from "@/components/BookACallLink";
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden hero-grid-bg">
+    <section id="apex-acquisition" className="relative py-20 overflow-hidden hero-grid-bg">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
           {/* Left column */}
@@ -19,10 +19,10 @@ export default function Hero() {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-tight mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-tight mb-6">
               Get the <span className="gradient-text">right people</span>{" "}
               in the room. With AI-powered precision.
-            </h1>
+            </h2>
 
             <p className="text-text-light text-lg leading-relaxed mb-8 max-w-xl">
               You&apos;ve planned the event. We find the people who belong there.

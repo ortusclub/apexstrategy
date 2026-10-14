@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "./_components/Hero";
+import AiEraBanner from "./_components/AiEraBanner";
 import LogosBar from "@/components/LogosBar";
 import PainCards from "@/components/PainCards";
 import Timeline from "./_components/Timeline";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   description,
   keywords: ["AI-first delegate acquisition", "B2B event attendance", "executive prospecting", "AI-powered guest acquisition"],
   alternates: { canonical: "/ai-first-hpage" },
-  openGraph: { title: "The right executives. A smarter way to reach them.", description, url: "/ai-first-hpage" },
+  openGraph: { title: "The AI era has reached B2B delegate acquisition.", description, url: "/ai-first-hpage" },
   twitter: { title: "AI-first delegate acquisition | Apex Strategy", description },
 };
 
@@ -30,6 +31,7 @@ export default function AiFirstHomePage() {
       <ScrollReveal />
       <Navbar />
       <main id="main-content">
+        <AiEraBanner />
         <Hero />
         <LogosBar prominent />
         <PainCards />

@@ -54,6 +54,13 @@ export default function PricingPage() {
                 <BookACallLink className="inline-flex items-center justify-center gap-2 w-full bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-3.5 rounded-lg transition-colors">Discuss this tier <ArrowRightIcon className="w-4 h-4" /></BookACallLink>
               </article>)}
             </div>
+            <div className="mt-8 rounded-2xl border border-accent/30 bg-bg-card p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Just a few guests? Planning something bigger?</h3>
+                <p className="text-text-light leading-relaxed max-w-2xl">Whether you need a handful of qualified attendees, more than 100, or a target between tiers, get in touch. We’ll provide bespoke pricing for your event and audience.</p>
+              </div>
+              <Link href="/contact" className="inline-flex shrink-0 items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-bg-primary font-semibold px-6 py-3.5 rounded-lg transition-colors">Get a bespoke quote <ArrowRightIcon className="w-4 h-4" /></Link>
+            </div>
             <div className="max-w-4xl mx-auto mt-8 rounded-xl border border-border bg-bg-primary/40 p-6">
               <h3 className="text-base font-semibold mb-2">Audience difficulty adjustment</h3>
               <p className="text-text-light text-sm leading-relaxed">The prices above are our standard tier rates. Apex Strategy reserves the right to quote a difficulty multiplier for particularly demanding briefs, such as highly specialised roles, restricted account lists, hard-to-reach markets or short lead times. Any multiplier, the fees it applies to and the revised total will be clearly stated in your proposal and agreed with you before the campaign begins.</p>

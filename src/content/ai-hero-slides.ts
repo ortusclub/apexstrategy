@@ -1,7 +1,7 @@
 import { HERO_SLIDES, type HeroSlide } from "./hero-slides";
 
-// Licensed illustrative event-format photography; these are not Apex client events.
-// Stock source and AI-edit provenance are recorded for each asset.
+// Event-format photography, including licensed stock and a user-supplied dinner photo.
+// Source and usage provenance are recorded per asset; no claim that Apex hosted these events.
 const pexelsLicense = "Pexels License — free for commercial use, no attribution required";
 export const AI_HERO_SLIDES: HeroSlide[] = [
   {
@@ -19,16 +19,17 @@ export const AI_HERO_SLIDES: HeroSlide[] = [
   },
   HERO_SLIDES[3],
   {
-    src: "/images/events/executive-conversation-v3.png",
-    alt: "Illustrative executive discussion: three professionals in suits talking around a table in a warmly lit meeting space",
-    width: 1448,
-    height: 1086,
-    caption: "Focused executive discussions",
+    src: "/images/events/executive-dinner-user-v1.png",
+    alt: "Guests conversing across a long dining table in a warmly lit private restaurant room",
+    width: 1052,
+    height: 1202,
+    caption: "Executive dinners",
+    position: "center 75%",
     credit: {
-      photographer: "August de Richelieu (source photograph; AI-edited illustration)",
-      source: "https://www.pexels.com/photo/formal-business-meeting-4427923/",
-      license: pexelsLicense,
-      note: "Edited with built-in imagegen: wider composition, reduced foreground obstruction, warmer lighting and more welcoming engagement. Illustrative imagery, not an actual Apex client event. Prompt: src/content/executive-conversation-v3-prompt.txt",
+      photographer: "Not specified (user-supplied photograph)",
+      source: "User attachment: Screenshot 2026-10-14 at 14.33.25.png",
+      license: "Supplied by the user for use on this website",
+      note: "Original supplied image, unedited. CSS object-position favours the guests and table over the ceiling.",
     },
   },
   HERO_SLIDES[5],

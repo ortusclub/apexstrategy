@@ -5,6 +5,10 @@ import {
   DiningIcon,
   SportingIcon,
   SummitIcon,
+  TargetIcon,
+  GlobeIcon,
+  MailIcon,
+  AttendanceIcon,
 } from "@/components/icons";
 import { CTA_SECONDARY_PATH } from "@/lib/site";
 
@@ -33,40 +37,24 @@ const EVENT_TYPES = [
 
 const CAPABILITIES = [
   {
-    title: "Multi-signal data intelligence",
-    summary: "Find the executives with a reason to be in the room.",
-    points: [
-      "Map relevant signals such as leadership changes, funding, hiring and regulatory shifts to your event’s themes.",
-      "Combine company and contact data with current public intelligence to enrich and verify executive profiles.",
-      "Bring targeting context and engagement history together for a coordinated campaign.",
-    ],
+    Icon: TargetIcon,
+    title: "Find the right people",
+    summary: "AI-powered targeting connects your event with relevant senior decision-makers.",
   },
   {
-    title: "Coordinated multi-channel outreach",
-    summary: "Reach decision-makers through a connected invitation journey.",
-    points: [
-      "Sequence email, LinkedIn and direct messaging so each touchpoint builds on the last.",
-      "Adapt channel mix and follow-up timing to engagement, reducing repetitive outreach.",
-      "Apply agreed exclusions, suppression lists and opt-out preferences across campaign channels.",
-    ],
+    Icon: GlobeIcon,
+    title: "Reach them intelligently",
+    summary: "Coordinated outreach across email, LinkedIn and direct messaging.",
   },
   {
-    title: "Personalised, concierge-level engagement",
-    summary: "Make every invitation relevant and every next step easy.",
-    points: [
-      "Tailor invitations to each executive’s role, company priorities, public initiatives and industry.",
-      "Use AI-assisted conversations to answer event questions and support follow-up in an executive-level tone.",
-      "Streamline scheduling and registration confirmation to turn interest into confirmed guests.",
-    ],
+    Icon: MailIcon,
+    title: "Make it personal",
+    summary: "Tailored invitations and concierge-style follow-up turn interest into registrations.",
   },
   {
-    title: "Intelligent attendance management",
-    summary: "Keep acquisition aligned with your audience goals and capacity.",
-    points: [
-      "Identify relevant look-alike accounts and roles when the original brief is narrow, with your approval before expanding.",
-      "Monitor registration pace against targets and adapt campaign activity within agreed limits.",
-      "Route additional interest into waitlists or agreed one-to-one sales follow-up, with your attendee cap kept in view.",
-    ],
+    Icon: AttendanceIcon,
+    title: "Build your audience",
+    summary: "We track progress and adapt your campaign around your attendance goals.",
   },
 ];
 
@@ -88,11 +76,8 @@ export default function Solution() {
               Executive Events
             </h2>
             <p className="text-text-light text-lg leading-relaxed mb-8">
-              Reach C-suite and VP-level leaders in enterprise technology and
-              professional services. Precise account and role targeting.
-              Invitations that feel personal. A coordinated campaign that
-              scales around your event, with approved audience expansion
-              when your initial brief is too narrow.
+              We combine AI-powered targeting with personal outreach to bring
+              the right C-suite and VP-level guests to your event.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -137,29 +122,24 @@ export default function Solution() {
               Powered by the Apex Precision Pipeline™
             </h3>
             <p className="text-text-light text-lg leading-relaxed">
-              Our AI-first orchestration brings together executive intent,
-              enriched data and coordinated outreach to deliver personalised,
-              concierge-level engagement at scale.
+              Intelligent targeting. Personal invitations. Qualified guests.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {CAPABILITIES.map((capability, index) => (
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+            {CAPABILITIES.map((capability) => (
               <article
                 key={capability.title}
-                className="bg-bg-card border border-border rounded-2xl p-6 md:p-8 reveal"
+                className="bg-bg-card border border-border rounded-2xl p-6 reveal"
               >
-                <span className="text-accent text-sm font-semibold tracking-widest" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h4 className="text-xl font-semibold text-white mt-3 mb-3">
+                <div className="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent mb-6" aria-hidden="true">
+                  <capability.Icon className="w-7 h-7" />
+                </div>
+                <h4 className="text-lg font-semibold text-white mb-3">
                   {capability.title}
                 </h4>
-                <p className="text-text-light leading-relaxed mb-5">
+                <p className="text-text-light text-sm leading-relaxed">
                   {capability.summary}
                 </p>
-                <ul className="list-disc pl-5 space-y-3 text-sm text-text-muted leading-relaxed marker:text-accent">
-                  {capability.points.map((point) => <li key={point}>{point}</li>)}
-                </ul>
               </article>
             ))}
           </div>

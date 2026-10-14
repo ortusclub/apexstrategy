@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/pricing`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     // Only services with real content — see `indexable` in @/lib/site.
     ...SERVICES.filter((service) => service.indexable).map((service) => ({
       url: `${SITE_URL}/${service.slug}`,

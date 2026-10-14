@@ -1,6 +1,6 @@
 import { HERO_SLIDES, type HeroSlide } from "./hero-slides";
 
-// Event-format photography, including licensed stock and a user-supplied dinner photo.
+// Event-format photography, including licensed stock and user-supplied photos.
 // Source and usage provenance are recorded per asset; no claim that Apex hosted these events.
 const pexelsLicense = "Pexels License — free for commercial use, no attribution required";
 export const AI_HERO_SLIDES: HeroSlide[] = [
@@ -33,18 +33,17 @@ export const AI_HERO_SLIDES: HeroSlide[] = [
     },
   },
   HERO_SLIDES[5],
-  HERO_SLIDES[0],
   {
-    src: "/images/events/workshop-collaboration-v1.jpg",
-    alt: "Workshop participants discussing ideas with a facilitator beside a flipchart with sticky notes",
-    width: 1600,
-    height: 1067,
-    caption: "Workshops",
-    position: "55% center",
+    src: "/images/events/executive-summit-user-v1.png",
+    alt: "Executive summit panel discussion on a blue-lit stage in front of an audience",
+    width: 1050,
+    height: 552,
+    caption: "Executive summits",
+    position: "center center",
     credit: {
-      photographer: "Alena Darmel",
-      source: "https://www.pexels.com/photo/people-in-a-meeting-7710054/",
-      license: pexelsLicense,
+      photographer: "Not specified (user-supplied photograph)",
+      source: "User attachment: Screenshot 2026-10-14 at 14.46.59.png",
+      license: "Supplied by the user for use on this website",
     },
   },
 ];

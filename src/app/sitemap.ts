@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
-    // One page per September dinner.
+    // One page per Aphinia dinner, past and upcoming.
     ...DINNERS.map((dinner) => ({
       url: `${SITE_URL}/events/${dinner.slug}`,
       lastModified,

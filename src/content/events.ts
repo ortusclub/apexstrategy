@@ -29,6 +29,8 @@ export type DeliveredEvent = {
   year: string;
   type: string;
   description: string;
+  /** Whoever convened the event. Never Apex. Omit when not confirmed. */
+  host?: string;
 };
 
 export const DELIVERED_EVENTS: DeliveredEvent[] = [
@@ -37,19 +39,22 @@ export const DELIVERED_EVENTS: DeliveredEvent[] = [
     // CONFIRM: carried over from the previous "Aphinia at Fal.Con" entry,
     // which was a Las Vegas campaign. Renaming and re-dating this card to
     // 2026 may well have moved the venue with it — verify before publishing.
-    location: "Las Vegas, United States",
+    location: "Las Vegas, NV",
     year: "2026",
     type: "Executive roundtable",
     description:
-      "Delegate acquisition for a senior cybersecurity roundtable convened alongside a major industry conference, targeting CISOs and heads of security attending the wider event.",
+      "Held alongside a major industry conference, this senior cybersecurity roundtable drew together CISOs and heads of security attending the wider event.",
+    // Carried over from the "Aphinia at Fal.Con" entry this card replaced.
+    host: "Aphinia",
   },
   {
     name: "AI Impact Brisbane",
     location: "Brisbane, Australia",
     year: "2025",
     type: "Executive briefing",
+    host: "IDC",
     description:
-      "An executive briefing on enterprise AI adoption, with outreach focused on technology and data leaders across the Australian market.",
+      "IDC's executive briefing on enterprise AI adoption, bringing together technology and data leaders from across the Australian market.",
   },
 ];
 

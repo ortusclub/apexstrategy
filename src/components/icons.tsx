@@ -308,3 +308,12 @@ export function ChevronRightIcon({ className }: IconProps) {
     </Svg>
   );
 }
+
+export function MapPinIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" />
+      <path d="M12 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+    </Svg>
+  );
+}

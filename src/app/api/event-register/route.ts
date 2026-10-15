@@ -18,7 +18,7 @@ import { dinnerEventLabel, type DinnerSlug } from "@/content/dinners";
 /**
  * Used when a submission does not name an event — which is every submission
  * from the CISO Roundtable page, the only form that existed before the
- * September dinners.
+ * Aphinia dinners.
  */
 const DEFAULT_EVENT_LABEL = "CISO Roundtable — 30 June 2026 — Alexandria, VA";
 

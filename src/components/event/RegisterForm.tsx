@@ -69,6 +69,7 @@ export default function RegisterForm({
   requirePhone = false,
   submitLabel = "Request seat →",
   confirmation,
+  disclosure,
 }: {
   eventId?: string;
   heading?: string;
@@ -82,6 +83,8 @@ export default function RegisterForm({
   requirePhone?: boolean;
   submitLabel?: string;
   confirmation?: { heading: string; body: string };
+  /** Privacy notice shown beneath the submit button. */
+  disclosure?: React.ReactNode;
 } = {}) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
@@ -208,6 +211,7 @@ export default function RegisterForm({
 
   const nameField = (
     <Field
+      card={variant === "card"}
       id="name"
       label="Full name"
       name="name"
@@ -222,6 +226,7 @@ export default function RegisterForm({
   );
   const emailField = (
     <Field
+      card={variant === "card"}
       id="email"
       label="Work email"
       name="email"
@@ -235,6 +240,7 @@ export default function RegisterForm({
   );
   const companyField = (
     <Field
+      card={variant === "card"}
       id="company"
       label="Company"
       name="company"
@@ -248,6 +254,7 @@ export default function RegisterForm({
   );
   const titleField = (
     <Field
+      card={variant === "card"}
       id="title"
       label="Job title"
       name="title"
@@ -262,6 +269,7 @@ export default function RegisterForm({
   );
   const phoneField = (
     <Field
+      card={variant === "card"}
       id="phone"
       label="Phone"
       optional={requirePhone ? undefined : "for last-minute coordination"}
@@ -295,7 +303,7 @@ export default function RegisterForm({
       ref={cardRef}
       className={
         variant === "card"
-          ? "bg-bg-card border border-border rounded-2xl p-7"
+          ? "bg-bg-card border border-border rounded-2xl p-7 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.6)]"
           : "max-w-2xl mx-auto bg-bg-card border border-border rounded-2xl p-10 md:p-12"
       }
     >
@@ -366,7 +374,11 @@ export default function RegisterForm({
             <button
               type="submit"
               disabled={status.kind === "submitting"}
-              className="bg-accent hover:bg-accent-hover disabled:opacity-60 text-bg-primary font-semibold px-8 py-3.5 rounded-lg transition-colors inline-flex items-center gap-2"
+              className={
+                variant === "card"
+                  ? "w-full bg-accent hover:bg-accent-hover disabled:opacity-60 disabled:hover:scale-100 text-bg-primary font-semibold py-3.5 rounded-lg transition-all hover:scale-[1.01] active:scale-[0.99] motion-reduce:transform-none inline-flex items-center justify-center gap-2"
+                  : "bg-accent hover:bg-accent-hover disabled:opacity-60 text-bg-primary font-semibold px-8 py-3.5 rounded-lg transition-colors inline-flex items-center gap-2"
+              }
             >
               {status.kind === "submitting" ? "Submitting…" : submitLabel}
             </button>
@@ -376,6 +388,12 @@ export default function RegisterForm({
               </p>
             )}
           </div>
+
+          {disclosure && (
+            <p className="text-xs text-text-muted leading-relaxed -mt-2">
+              {disclosure}
+            </p>
+          )}
         </form>
       )}
     </div>
@@ -393,6 +411,7 @@ export default function RegisterForm({
 }
 
 function Field({
+  card = false,
   id,
   label,
   name,
@@ -406,6 +425,8 @@ function Field({
   onChange,
   inputRef,
 }: {
+  /** The card variant's darker, tighter field treatment. */
+  card?: boolean;
   id: string;
   label: string;
   name: string;
@@ -442,8 +463,16 @@ function Field({
         onChange={onChange}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${id}-error` : undefined}
-        className={`w-full bg-bg-secondary border rounded-lg px-4 py-3 text-text-white placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-[rgba(0,208,132,0.15)] ${
-          error ? "border-[#f87171] focus:border-[#f87171]" : "border-border focus:border-accent"
+        className={`w-full border rounded-lg px-4 py-3 focus:outline-none transition-colors ${
+          card
+            ? "bg-bg-primary/90 text-text-light placeholder:text-text-muted/70 focus:ring-1"
+            : "bg-bg-secondary text-text-white placeholder:text-text-muted focus:ring-2"
+        } ${
+          error
+            ? "border-[#f87171] focus:border-[#f87171] focus:ring-[#f87171]/40"
+            : card
+              ? "border-accent-secondary/15 focus:border-accent focus:ring-accent"
+              : "border-border focus:border-accent focus:ring-[rgba(0,208,132,0.15)]"
         }`}
       />
       {error && (

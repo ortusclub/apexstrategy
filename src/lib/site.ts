@@ -16,6 +16,16 @@ export const LEGAL_NAME = "Apex Guesting Limited";
 export const CONTACT_EMAIL = "info@apexstrategy.io";
 
 /**
+ * Legal pages linked from the event form's privacy notice. Neither page exists
+ * yet — leave a value undefined and the notice shows that phrase as plain
+ * text instead of linking to a 404. Set the path once the page is live.
+ */
+export const LEGAL_LINKS: { privacy?: string; terms?: string } = {
+  privacy: undefined,
+  terms: undefined,
+};
+
+/**
  * Everyone who should receive a copy of Contact form and CISO Roundtable
  * submissions. Dinner seat requests use their own list in the
  * event-registration route. Internal only: never rendered on the site.
